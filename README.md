@@ -23,3 +23,25 @@ Database:
 Pages:  
   
 Scripts:  
+    flaskapp.py  
+        This is the app responsible for interacting with the mysql database  
+        it needs to be able to retrieve player information from the file  
+        gamescripts.js and save it to the database. The flask app also needs  
+        to be able to take data from the database, and pass it to javascript  
+        to load a player.  
+  
+        You will need to create a new .venv environment to run this app, and  
+        will also need to pip install flask, and other imported packages.  
+          
+        - Nathan  
+          
+    gamescripts.js
+        This is the body of the program, this javascript file is going to  
+        contain the classes, and functions to run the game. This file will  
+        need to be accessible by the flaskapp, and later the database.  
+        This will also likely contain the code to animate and update the  
+        battleship game board.  
+          
+        Nothing special to note.  
+          
+        - Nathan  
