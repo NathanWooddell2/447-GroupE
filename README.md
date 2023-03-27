@@ -4,6 +4,7 @@ We are creating "Extreme Battleship" as a web based game.
 Organization Directories:  
     There are currently 4 directories, each is labled with what it should contain.  
     Feel free to add a directory, but make sure you explain it here.  
+      
     Assets:  
         Store sprites, sounds, and other game assets in this folder.  
     Database:  
@@ -14,3 +15,11 @@ Organization Directories:
     Scripts:  
         A folder for Javascript, and Python  script files. This will likely  
         contain other types of script files also.  
+  
+Assets:
+  
+Database:  
+  
+Pages:  
+  
+Scripts:  
