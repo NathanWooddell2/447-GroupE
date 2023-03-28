@@ -19,6 +19,21 @@ Organization Directories:
 Assets:
   
 Database:  
+    After downloading MySQL Workbench, the first thing you need to do is create a connection. Name this connection Battleship and leave the rest of the values as default, except the username, which you should set to ship. Do not create a password for this.
+
+    Once the connection has been established, you should be able to create a new schema by clicking the fourth button below the menus. It will be below Query and look like a cylinder with a line through it.
+
+    Name the new schema Battleship. Then run this SQL script.
+
+        CREATE TABLE `players` (
+          `playerID` int NOT NULL,
+          `playerName` varchar(255) NOT NULL,
+          `highestLevel` int NOT NULL,
+          `accuracy` decimal(2,0) NOT NULL,
+          PRIMARY KEY (`playerID`),
+          UNIQUE KEY `playerID_UNIQUE` (`playerID`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
   
 Pages:  
   
