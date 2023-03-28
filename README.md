@@ -42,6 +42,8 @@ Scripts:
         This will also likely contain the code to animate and update the  
         battleship game board.  
           
-        Nothing special to note.  
+        Almost all of the functions here should be accessable externally.  
+        These functions and scripts should be used by the HTML portion of  
+        the website.  
           
         - Nathan  
