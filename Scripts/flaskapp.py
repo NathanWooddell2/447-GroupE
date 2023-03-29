@@ -11,10 +11,45 @@
 # terminal).
 
 # --- IMPORT/GLOBAL SPACE ---
-from flask import Flask                         # Flask will read from JSON to our SQL database
+from flask import Flask, jsonify                # Flask will read from JSON to our SQL database
+from flask_sqlalchemy import SQLAlchemy         # SQL Alchemy will be used to directly interact with the database.
+from flask_marshmallow import Marshmallow
+from dataclasses import dataclass
 import json                                     # JSON Will be used to fetch data from battleship.js
 
 app = Flask(__name__)
+
+# --- Database setup ---
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ship@localhost:3306/battleship'
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
+@dataclass
+class Player(db.Model):
+    id: int
+    name: str
+    level: int
+    accuracy: float
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255))
+    level = db.Column(db.Integer)
+    accuracy = db.Column(db.Float)
+
+    def __init__(self, id, name, level, accuracy):
+        self.id = id
+        self.name = name
+        self.level = level
+        self.accuracy = accuracy
+
+
+class PlayerSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'name', 'level', 'accuracy')
+
+playerSchema = PlayerSchema()
+
 
 # --- FUNCTION SPACE ---
 
@@ -23,6 +58,12 @@ app = Flask(__name__)
 def test():
     return "this is an example testing function"
 
+
+@app.route('/getAll', methods = ['GET'])
+def getPlayers():
+    results = Player.query.all()
+    return jsonify(results)
+
 # --- MAIN APP SPACE ---
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
