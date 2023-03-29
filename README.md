@@ -29,7 +29,7 @@ We are creating "Extreme Battleship" as a web based game.
           `playerID` int NOT NULL,
           `playerName` varchar(255) NOT NULL,
           `highestLevel` int NOT NULL,
-          `accuracy` decimal(2,0) NOT NULL,
+          `accuracy` float NOT NULL,
           PRIMARY KEY (`playerID`),
           UNIQUE KEY `playerID_UNIQUE` (`playerID`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
