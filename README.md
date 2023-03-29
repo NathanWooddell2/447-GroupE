@@ -1,7 +1,7 @@
 # 447-GroupE
 We are creating "Extreme Battleship" as a web based game.    
 
-Organization Directories:  
+## Organization Directories:  
     There are currently 4 directories, each is labled with what it should contain.  
     Feel free to add a directory, but make sure you explain it here.  
       
@@ -16,9 +16,9 @@ Organization Directories:
         A folder for Javascript, and Python  script files. This will likely  
         contain other types of script files also.  
   
-Assets:
+### Assets:
   
-Database:  
+### Database:  
     After downloading MySQL Workbench, the first thing you need to do is create a connection. Name this connection Battleship and leave the rest of the values as default, except the username, which you should set to ship. Do not create a password for this.
 
     Once the connection has been established, you should be able to create a new schema by clicking the fourth button below the menus. It will be below Query and look like a cylinder with a line through it.
@@ -35,9 +35,9 @@ Database:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
   
-Pages:  
+### Pages:  
   
-Scripts:  
+### Scripts:  
     flaskapp.py  
         This is the app responsible for interacting with the mysql database  
         it needs to be able to retrieve player information from the file  
@@ -47,8 +47,6 @@ Scripts:
   
         You will need to create a new .venv environment to run this app, and  
         will also need to pip install flask, and other imported packages.  
-          
-        - Nathan  
           
     gamescripts.js
         This is the body of the program, this javascript file is going to  
@@ -60,5 +58,3 @@ Scripts:
         Almost all of the functions here should be accessable externally.  
         These functions and scripts should be used by the HTML portion of  
         the website.  
-          
-        - Nathan  

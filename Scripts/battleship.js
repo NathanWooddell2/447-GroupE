@@ -76,10 +76,34 @@ player hits, and the number of ships/segments that the player has left. This sho
 players accuracy and current level, and be able to save this data into a .json file.*/
 class Player{
     // Standard Class Constructor
-    constructor(bot){
-        this.bot = bot;                                 // Whether this player is a bot
-        
+    constructor(difficulty){
+        this.level = difficulty;
     }
+}
+
+class Bot extends Player{
+    // Standard Class Constructor
+    constructor(difficulty, name){
+        this.level = difficulty;                        // Tracks the difficulty of the bot
+        this.name = name;                               // Serves as a name for the bot, for flavor
+    }
+}
+
+/* Game Class
+This class contains all of the information about the game, and the functions to keep the game running
+in this class there will need to be methods to run the game, and there will likely be a class that
+inherits from this class to represent a player vs player game as opposed to the standard player vs CPU
+game. */
+class Game{
+    // Standard Class Constructor
+    constructor(){
+        this.spPlayer = Player();                   // Creates a new non-bot player
+        this.spBot = Bot();                         // Creates a new bot
+        this.MpPlayer = null;                       // Used in the case of a Multiplayer game
+    }
+    // Main game loop
+    // Game over handling
+    // 
 }
 
 // --- FUNCTION DEFINITIONS ---
