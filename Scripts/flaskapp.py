@@ -43,10 +43,24 @@ class Player(db.Model):
         self.level = level
         self.accuracy = accuracy
 
+class NewPlayer():
+    accuracy: float
+    level: int
+    name: str
+
+    
+    def __init__(self, accuracy, level, name):
+        self.accuracy = accuracy
+        self.level = level
+        self.name = name
 
 class PlayerSchema(ma.Schema):
     class Meta:
         fields = ('id', 'name', 'level', 'accuracy')
+
+class NewPlayerSchema(ma.Schema):
+    class Meta:
+        fields = ('accuracy', 'level', 'name')
 
 playerSchema = PlayerSchema()
 
@@ -58,11 +72,42 @@ playerSchema = PlayerSchema()
 def test():
     return "this is an example testing function"
 
-
 @app.route('/getAll', methods = ['GET'])
-def getPlayers():
+def getAllPlayers():
     results = Player.query.all()
     return jsonify(results)
+
+@app.route('/getPlayer/<id>', methods = ['GET'])
+def getPlayer(id):
+    player = Player.query.get(id)
+
+    return playerSchema.jsonify(player)
+
+@app.route('/newPlayer', methods = ['POST'])
+def createNewPlayer():
+    accuracy = request.json['accuracy']
+    level = request.json['level']
+    name = request.json['name']
+
+    player = NewPlayer(accuracy, level, name)
+    db.session.add(player)
+    db.session.commit()
+
+    return newPlayerSchema.jsonify(player)
+
+@app.route('/updatePlayer/<id>', methods = ['PUT'])
+def updatePlayer(id):
+    player = Player.query.get(id)
+
+    accuracy = request.json['accuracy']
+    level = request.json['level']
+
+    player.accuracy = accuracy
+    player.level = level
+
+    db.session.commit()
+    return playerSchema.jsonify(player)
+
 
 # --- MAIN APP SPACE ---
 if __name__ == "__main__":
