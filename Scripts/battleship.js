@@ -12,8 +12,7 @@ class are set without input from the constructor. These values will be updated t
 the course of the game, using the class's methods. */
 class Tile{
     // Standard Class Constructor
-    constructor(sprite){
-        this.sprite = sprite;                           // needs to be assigned correctly
+    constructor(){
         this.struck = false;                            // denotes whether the tile has been struck
         this.has_ship = false;                          // denotes whether there is a ship on this tile
         this.ship_p = null;                             // Pointer to the ship in the tile (if any)
@@ -29,12 +28,23 @@ class Board{
     // Standard Class Constructor
     constructor(difficulty){
         this.difficulty = difficulty;                   // The Difficulty value for the level
-        this.size = size;                               // Currently hardcoded until the getter is done.
+        this.size = 8;                                  // Currently hardcoded until the getter is done.
         this.owner = null;                              // The owner of the board / who can see it.
+        this.visible = true;                            // Toggle the visibility of the board to the player
     }
-    // Getter for board size -> used in constructor
+    // Board size generation method.
+    gen_size(){
+        if(this.difficulty == 1){
+            this.size = 8;
+        }else if(this.difficulty == 2){
+            this.size = 10;
+        }else{
+            this.size = 12;
+        }
+        return;
+    }
     // Method to populate board
-    // Method to generate the board in userspace
+    // Method to generate the board in userspace?
 }
 
 /* Ship Class
@@ -65,8 +75,10 @@ use inheritance for different types of weapons. For example, a Strafing run woul
 features than a standard attack. */
 class Weapon{
     // Standard Class Constructor
-    constructor(){
-
+    constructor(name, length, streak_req){
+        this.name = name;
+        this.streak_req = streak_req;
+        this.length = length;
     }
 }
 
@@ -78,14 +90,23 @@ class Player{
     // Standard Class Constructor
     constructor(difficulty){
         this.level = difficulty;
+        this.streak = 0;
     }
 }
 
-class Bot extends Player{
+/* Bot Class
+This class contains all of the information about the bot, including it's methods to attack, and
+determine the  
+*/
+class bot{
     // Standard Class Constructor
     constructor(difficulty, name){
         this.level = difficulty;                        // Tracks the difficulty of the bot
         this.name = name;                               // Serves as a name for the bot, for flavor
+    }
+    // Bot attack method
+    bot_attack(difficulty){
+
     }
 }
 
@@ -97,9 +118,9 @@ game. */
 class Game{
     // Standard Class Constructor
     constructor(){
-        this.spPlayer = Player();                   // Creates a new non-bot player
-        this.spBot = Bot();                         // Creates a new bot
-        this.MpPlayer = null;                       // Used in the case of a Multiplayer game
+        this.Player = Player();                   // Creates a new non-bot player
+        this.Bot = Bot();                         // Creates a new bot
+        this.Mp_Player = null;                       // Used in the case of a Multiplayer game
     }
     // Main game loop
     // Game over handling
