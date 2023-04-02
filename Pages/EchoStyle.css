@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap');
 
+@font-face {
+    font-family: myFirstFont;
+    src: url(LondrinaSolid-Light.ttf);
+ }
+ 
+ * {
+    font-family: myFirstFont;
+ }
 
 
 body {
     background-color: #c8734a;
     background-image: linear-gradient(#c8734a, #e9cc66);
     background-attachment: fixed;
-}
-
-body {
-    font-family: 'Londrina Solid', cursive;
 }
