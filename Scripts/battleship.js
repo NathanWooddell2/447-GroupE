@@ -12,7 +12,8 @@ class are set without input from the constructor. These values will be updated t
 the course of the game, using the class's methods. */
 class Tile{
     // Standard Class Constructor
-    constructor(){
+    constructor(sprite){
+        this.sprite = sprite;                           // needs to be assigned correctly
         this.struck = false;                            // denotes whether the tile has been struck
         this.has_ship = false;                          // denotes whether there is a ship on this tile
         this.ship_p = null;                             // Pointer to the ship in the tile (if any)
@@ -28,23 +29,12 @@ class Board{
     // Standard Class Constructor
     constructor(difficulty){
         this.difficulty = difficulty;                   // The Difficulty value for the level
-        this.size = 8;                                  // Currently hardcoded until the getter is done.
+        this.size = size;                               // Currently hardcoded until the getter is done.
         this.owner = null;                              // The owner of the board / who can see it.
-        this.visible = true;                            // Toggle the visibility of the board to the player
     }
-    // Board size generation method.
-    gen_size(){
-        if(this.difficulty == 1){
-            this.size = 8;
-        }else if(this.difficulty == 2){
-            this.size = 10;
-        }else{
-            this.size = 12;
-        }
-        return;
-    }
+    // Getter for board size -> used in constructor
     // Method to populate board
-    // Method to generate the board in userspace?
+    // Method to generate the board in userspace
 }
 
 /* Ship Class
@@ -75,10 +65,8 @@ use inheritance for different types of weapons. For example, a Strafing run woul
 features than a standard attack. */
 class Weapon{
     // Standard Class Constructor
-    constructor(name, length, streak_req){
-        this.name = name;
-        this.streak_req = streak_req;
-        this.length = length;
+    constructor(){
+
     }
 }
 
@@ -88,43 +76,89 @@ player hits, and the number of ships/segments that the player has left. This sho
 players accuracy and current level, and be able to save this data into a .json file.*/
 class Player{
     // Standard Class Constructor
-    constructor(difficulty){
+    constructor(difficulty, p_name){
         this.level = difficulty;
+        this.name = p_name;
         this.streak = 0;
+        this.hits = 0;
+        this.misses = 0;                                 // Hit counter (Elijah)
+        this.current_player_data = '';
+        
     }
-}
 
-/* Bot Class
-This class contains all of the information about the bot, including it's methods to attack, and
-determine the  
-*/
-class bot{
-    // Standard Class Constructor
-    constructor(difficulty, name){
-        this.level = difficulty;                        // Tracks the difficulty of the bot
-        this.name = name;                               // Serves as a name for the bot, for flavor
+    player_hits(Weapon){
+        //Elijah
+        //How to track  player hit?
+        //references the board list
+        //everytime a player takes shot
+        //indexing through the board list
+            //check to see if a ship exists where shot was taken 
+            //if not considered a miss
+            //if there is a ship, it's a hit
+                //increment the hits total
+        
+        const tile = new Tile();
+        const game = new Game();
+        if (game.shot()){
+            if (tile.get_ship(location)){ // checking if a ship exists where player shot
+                this.hits++;
+            }else{
+                this.misses++;
+                //considered miss
+            }
+        }
+         
     }
-    // Bot attack method
-    bot_attack(difficulty){
 
+    segment_left(){
+        //How to see how much of battleship is left?
+        //If player landed a hit on their turn
+            // start at location where hit was landed 
+            //while ref node isnt null 
+                //increment count variable
+                //move the current pointer
+        const tile = new Tile();
+        const ship = new Ship();
+        var temp = tile.get_ship(location);          //ref ship pointer
+        var count = 0;
+        while (temp != null){
+            count++;
+            temp = ship.get_next();
+        }
+        return count;
     }
-}
 
-/* Game Class
-This class contains all of the information about the game, and the functions to keep the game running
-in this class there will need to be methods to run the game, and there will likely be a class that
-inherits from this class to represent a player vs player game as opposed to the standard player vs CPU
-game. */
-class Game{
-    // Standard Class Constructor
-    constructor(){
-        this.Player = Player();                   // Creates a new non-bot player
-        this.Bot = Bot();                         // Creates a new bot
-        this.Mp_Player = null;                       // Used in the case of a Multiplayer game
+    save_player(){
+        //ID    Name    Level   Accuracy
+        //writing attributes to JSON file
+        var accuracy = this.hits / this.misses //accuracy
+        const fs = require("fs");
+        const client = {
+            "Name": this.name,
+            "Level": this.level,
+            "Accuracy": accuracy
+        }
+
+        const data = JSON.stringify(client);
+        fs.writeFile("./playerInfo.json", data, err=>{
+            //testing
+            if (err){
+                console.log("Error writing to file", err)
+            }else{
+                console.log("Written to JSON successfully")
+            }
+        })
+        
     }
-    // Main game loop
-    // Game over handling
-    // 
+
+    load_player(){
+        //Elijah
+    }
+
+    attack(){
+        //Elijah
+    }
+
 }
 
 // --- FUNCTION DEFINITIONS ---
