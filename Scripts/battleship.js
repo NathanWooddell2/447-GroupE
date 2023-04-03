@@ -29,11 +29,25 @@ class Board{
     // Standard Class Constructor
     constructor(difficulty){
         this.difficulty = difficulty;                   // The Difficulty value for the level
-        this.size = size;                               // Currently hardcoded until the getter is done.
+        this.size = gen_size(difficulty);                               // Currently hardcoded until the getter is done.
         this.owner = null;                              // The owner of the board / who can see it.
     }
-    // Getter for board size -> used in constructor
-    // Method to populate board
+    // Board Size Method
+    gen_size(){
+        if(this.difficulty == 1){
+            return 8;
+        }else if(this.difficulty == 2){
+            return 10;
+        }else{
+            return 12;
+        }
+    }
+
+    // Method to generate number of ships
+    gen_shup_num(){
+        
+    }
+
     // Method to generate the board in userspace
 }
 
