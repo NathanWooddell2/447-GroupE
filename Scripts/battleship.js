@@ -16,9 +16,32 @@ class Tile{
         this.sprite = sprite;                           // needs to be assigned correctly
         this.struck = false;                            // denotes whether the tile has been struck
         this.has_ship = false;                          // denotes whether there is a ship on this tile
+
         this.ship_p = null;                             // Pointer to the ship in the tile (if any)
+        this.arr_part = null;                           // Index of tile in ship array (if any) -- MUST BE INT
     }
-    // Hit Tile Method                                  // Will need to check a million things
+
+    // Hit Tile Method                               
+    Do_Hit(){
+        // Check whether this tile has been hit before;
+        if (this.struck == true){
+            return;
+        }
+
+        // Check to see if there is a ship on the tile
+        if(this.has_ship){
+            this.struck = false;
+            this.ship_p.inflict_wounds(this.arr_part);
+        }else{
+            this.struck = true;
+            // Change the sprite -- May be a HTML Thing idk
+        }
+    }
+
+    // Associate a ship with the tile -- Will be included in the ship placement function
+    Associate_Ship(){
+        // Currently not sure how to implement... will make an adendum.
+    }
 }
 
 /* Board Class
@@ -29,10 +52,17 @@ class Board{
     // Standard Class Constructor
     constructor(difficulty){
         this.difficulty = difficulty;                   // The Difficulty value for the level
-        this.size = gen_size(difficulty);                               // Currently hardcoded until the getter is done.
+        this.size = gen_size(difficulty);               // Refer to the function below
         this.owner = null;                              // The owner of the board / who can see it.
+        this.Body[size][size];                          // The main body of the board
     }
-    // Board Size Method
+
+    // setter for the board's owner
+    set owner(player){
+        this.owner = player;
+    }
+
+    // Board Size Determination Method
     gen_size(){
         if(this.difficulty == 1){
             return 8;
@@ -43,34 +73,45 @@ class Board{
         }
     }
 
-    // Method to generate number of ships
-    gen_shup_num(){
-        
+    // Fill the board with tile objects.
+    fill_board(){
+        for(let i = 0; i<this.size; i++){
+            for(let j = 0; j<this.size; j++){
+                this.Body[i][j] = new Tile();
+            }
+        }
     }
-
-    // Method to generate the board in userspace
 }
 
 /* Ship Class
-This class defines a ship, and all of the necessary components, the ship should act as a 
-doubly linked list that knows the overall condition of it's components. The ship class itself
-will track the head and tail of its self, aswell as it's overall length, and location on the board. */
+This  */
 class Ship{
     // Standard Class Constructor
-    constructor(length){
-        this.length = length;                           // The overall length of the ship
-        this.next = null;                               // The next segment of the ship
-        this.prev = null;                               // The previous segment of the ship
-        this.fore = null;                               // The front of the ship
-        this.aft = null;                                // The rear of the ship
-        this.heading = null;                            // The direction the ship is facing
-        this.hit = false;                               // whether this segment has been hit yet
-        this.destroyed = false;                         // changed when all segments are hit
-        this.drawn = false;                             // * MAY NOT BE NEEDED -> HERE SO I DONT FORGET
+    constructor(owner, length){
+        this.P_Owner = owner;                                           // The player class which owns the ship object
+        this.s_len = length;                                            // The length of the ship array.
+        this.ship_arr[length];                                          // An array to store the ship tile data.
+        this.heading = false;                                           // True for horizontal false for vertical.
+        this.visible = false;                                           // Determine whether the ship is being drawn
+        this.Max_health = length;                                       // The Maximum health of the ship
+        this.Cur_health = length;                                       // decremented as the ship is hit
     }
-    // Heading change method
-    // Place ship method
-    // Check for destroyed ship
+
+    // Add data to the ship array, should all start as bool false
+    initialize_ship(){
+        for(let i = 0; i < length; i++){
+            this.ship_arr[i] = false;
+        }
+    }
+
+    // Actually inflict the damage to the ship -- called by the 
+    inflict_wounds(position){
+        this.ship_arr[position] = true;
+        this.Cur_health--;
+        if(this.Cur_health == 0){
+            this.visible = true;
+        }
+    }
 }
 
 /* Weapon Class
@@ -79,9 +120,13 @@ use inheritance for different types of weapons. For example, a Strafing run woul
 features than a standard attack. */
 class Weapon{
     // Standard Class Constructor
-    constructor(){
-
+    constructor(name, streak, extend){
+        this.streak_req = streak;                                       // The Streak required to use the weapon
+        this.extends_streak = extend;                                   // Does the weapon extend the streak?
+        this.wep_name = name;                                           // The name of the weapon
     }
+
+    // Attack With the weapon
 }
 
 /* Player Class 
@@ -91,15 +136,28 @@ players accuracy and current level, and be able to save this data into a .json f
 class Player{
     // Standard Class Constructor
     constructor(difficulty, p_name){
-        this.level = difficulty;
-        this.name = p_name;
-        this.streak = 0;
-        this.hits = 0;
-        this.misses = 0;                                 // Hit counter (Elijah)
+        this.level = difficulty;                                // The current level the player is on
+        this.name = p_name;                                     // The player's name
+        this.streak = 0;                                        // The player's current scorestreak
+        this.shots = 0;                                         // Total attacks made by the player
+        this.hits = 0;                                          // Total hits made by the player
         this.current_player_data = '';
         
     }
 
+    // Make a player Attack - passed a tile object
+    attack(TILE){
+        if(TILE.has_ship == true){
+            // Player Stat Tracking
+            this.shots++;
+            this.hits++;
+            // Apply the damage to TILE.p_ship;
+        }else{
+            this.shots++;
+        }
+    }
+
+    // I THINK THIS MAY BE MISPLACED I WILL REFACTOR THIS AND EDIT IT -- Nathan
     player_hits(Weapon){
         //Elijah
         //How to track  player hit?
@@ -112,7 +170,7 @@ class Player{
                 //increment the hits total
         
         const tile = new Tile();
-        const game = new Game();
+        const game = new SPGame();
         if (game.shot()){
             if (tile.get_ship(location)){ // checking if a ship exists where player shot
                 this.hits++;
@@ -124,24 +182,7 @@ class Player{
          
     }
 
-    segment_left(){
-        //How to see how much of battleship is left?
-        //If player landed a hit on their turn
-            // start at location where hit was landed 
-            //while ref node isnt null 
-                //increment count variable
-                //move the current pointer
-        const tile = new Tile();
-        const ship = new Ship();
-        var temp = tile.get_ship(location);          //ref ship pointer
-        var count = 0;
-        while (temp != null){
-            count++;
-            temp = ship.get_next();
-        }
-        return count;
-    }
-
+    // Saves a Player to a JSON file.
     save_player(){
         //ID    Name    Level   Accuracy
         //writing attributes to JSON file
@@ -165,14 +206,36 @@ class Player{
         
     }
 
+    // Load a Player from JSON
     load_player(){
         //Elijah
     }
-
-    attack(){
-        //Elijah
-    }
-
 }
 
+/* class SPGame
+    This class contains all information about the game. It will include methods 
+    to generate the number of ships, the difficulty, and to create players attached to the game. 
+*/
+class SPGame{
+    // Standard Class Constructor
+    constructor(){
+        this.player = Player();                                 // The player class
+        this.bot = Bot();                                       // A game bot
+        this.Pships1[5];                                        // Player Ships
+        this.Bships[5];                                         // Bot Ships
+    }
+
+    // Main game loop method
+    main_loop(){
+        // Run the main game loop
+    }
+
+    // generate a singleplayer game from a player object
+    gen_player_game(LPlayer){
+        // generate a player from a player ID
+        this.player = LPlayer;                                  // A player loaded through the player load method.
+        this.bot = Bot();                                       // My bot class disapeared...
+    }
+    
+}
 // --- FUNCTION DEFINITIONS ---
