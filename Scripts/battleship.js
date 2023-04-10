@@ -13,12 +13,12 @@ the course of the game, using the class's methods. */
 class Tile{
     // Standard Class Constructor
     constructor(sprite){
-        this.sprite = sprite;                           // needs to be assigned correctly
-        this.struck = false;                            // denotes whether the tile has been struck
-        this.has_ship = false;                          // denotes whether there is a ship on this tile
+        this.sprite = sprite;                                           // needs to be assigned correctly
+        this.struck = false;                                            // denotes whether the tile has been struck
+        this.has_ship = false;                                          // denotes whether there is a ship on this tile
 
-        this.ship_p = null;                             // Pointer to the ship in the tile (if any)
-        this.arr_part = null;                           // Index of tile in ship array (if any) -- MUST BE INT
+        this.ship_p = null;                                             // Pointer to the ship in the tile (if any)
+        this.arr_part = null;                                           // Index of tile in ship array (if any) -- MUST BE INT
     }
 
     // Hit Tile Method                               
@@ -51,13 +51,13 @@ and will be called to be drawn in HTML */
 class Board{
     // Standard Class Constructor
     constructor(difficulty){
-        this.difficulty = difficulty;                   // The Difficulty value for the level
-        this.size = gen_size(difficulty);               // Refer to the function below
-        this.owner = null;                              // The owner of the board / who can see it.
-        this.Body[size][size];                          // The main body of the board
+        this.difficulty = difficulty;                                   // The Difficulty value for the level
+        this.size = gen_size(difficulty);                               // Refer to the function below
+        this.owner = null;                                              // The owner of the board / who can see it.
+        this.Body[size][size];                                          // The main body of the board
     }
 
-    // setter for the board's owner
+    // Setter for the board's owner
     set owner(player){
         this.owner = player;
     }
@@ -84,7 +84,9 @@ class Board{
 }
 
 /* Ship Class
-This  */
+This class is meant to represent the data for a ship. The ship consists of an array of bool values for each tile.
+The ship also tracks it's visibility, the max and current health of the ship, the length of the ship and the ship's
+owner. */
 class Ship{
     // Standard Class Constructor
     constructor(owner, length){
@@ -136,11 +138,11 @@ players accuracy and current level, and be able to save this data into a .json f
 class Player{
     // Standard Class Constructor
     constructor(difficulty, p_name){
-        this.level = difficulty;                                // The current level the player is on
-        this.name = p_name;                                     // The player's name
-        this.streak = 0;                                        // The player's current scorestreak
-        this.shots = 0;                                         // Total attacks made by the player
-        this.hits = 0;                                          // Total hits made by the player
+        this.level = difficulty;                                        // The current level the player is on
+        this.name = p_name;                                             // The player's name
+        this.streak = 0;                                                // The player's current scorestreak
+        this.shots = 0;                                                 // Total attacks made by the player
+        this.hits = 0;                                                  // Total hits made by the player
         this.current_player_data = '';
         
     }
@@ -213,16 +215,17 @@ class Player{
 }
 
 /* class SPGame
-    This class contains all information about the game. It will include methods 
-    to generate the number of ships, the difficulty, and to create players attached to the game. 
+This class contains all information about the game. It will include methods to generate the number of ships,
+to generate the difficulty, and to create players attached to the game. Most importantly the game includes a
+main_loop() function which handles turns.
 */
 class SPGame{
     // Standard Class Constructor
-    constructor(){
-        this.player = Player();                                 // The player class
-        this.bot = Bot();                                       // A game bot
-        this.Pships1[5];                                        // Player Ships
-        this.Bships[5];                                         // Bot Ships
+    constructor(name){
+        this.player = Player(1, name);                                  // The player class
+        this.bot = Bot();                                               // A game bot
+        this.Pships1[5];                                                // Player Ships
+        this.Bships[5];                                                 // Bot Ships
     }
 
     // Main game loop method
@@ -231,10 +234,10 @@ class SPGame{
     }
 
     // generate a singleplayer game from a player object
-    gen_player_game(LPlayer){
+    Create_From_Player(LPlayer){
         // generate a player from a player ID
-        this.player = LPlayer;                                  // A player loaded through the player load method.
-        this.bot = Bot();                                       // My bot class disapeared...
+        this.player = LPlayer;                                          // A player loaded through the player load method.
+        this.bot = Bot();                                               // My bot class disapeared...
     }
     
 }
