@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Battleship</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="/socket.io/socket.io.js"></script>
+
+</head> 
+<body>
+
+
+
+    <button id="onePlayerButton">Single Player</button>
+    <button id="twoPlayersButton">Multiplayer</button>
+
+    <div class="player p1">
+        Player 1
+        <div class="connected">Connected <span></span></div>
+        <div class="set">Set <span></span></div>
+    </div>
+    <div class="player p2">
+        Player 2
+        <div class="connected">Connected <span></span></div>
+        <div class="set">Set <span></span></div>
+    </div>
+
+    <div id="info">
+        <p>Turn: <span id="whos-turn"></span></p>
+        <p>Information: <span id="information"></span></p>
+    </div>
+
+    <div id="boards-contain"></div>
+
+    <div class="select-contain">
+        <div id="0" class="battleship battleship-design" draggable="true"></div>
+        <div id="1" class="carrier carrier-design" draggable="true"></div>
+        <div id="2" class="cruiser cruiser-design" draggable="true"></div>
+        <div id="3" class="destroyer destroyer-design" draggable="true"></div>
+        <div id="4" class="patrol patrol-design" draggable="true"></div>
+        <div id="5" class="rescue rescue-design" draggable="true"></div>
+        <div id="6" class="submarine submarine-design" draggable="true"></div>
+    </div>
+
+    <button id="begin-button">BEGIN</button>
+    <button id="rotate-button">ROTATE</button>
+
+    <script src="app.js"></script>
+    
+
+</body>
+</html>
