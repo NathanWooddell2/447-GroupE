@@ -10,8 +10,30 @@
  }
 
 
+/* Body and Class Segments */
+
 body {
     background-color: #c8734a;
     background-image: linear-gradient(#c8734a, #e9cc66);
     background-attachment: fixed;
 }
+#jumbo {
+    font-weight: bolder;
+    background: none;
+    font-size: 750%;
+    color: #692c29;
+    letter-spacing: .25cm;
+}
+#menu{
+    padding-bottom: 10%;
+}
+#menu-button {
+    color: #e9cc66;
+    font-weight: bold;
+    background-color: #a52931;
+    opacity: 0.6;
+    transition: 0.3s;
+    font-size: 300%;
+    padding: 1%;
+}
+#menu-button:hover {opacity: 0.9;}
