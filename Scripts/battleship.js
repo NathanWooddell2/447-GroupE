@@ -217,8 +217,7 @@ class Player{
 /* class SPGame
 This class contains all information about the game. It will include methods to generate the number of ships,
 to generate the difficulty, and to create players attached to the game. Most importantly the game includes a
-main_loop() function which handles turns.
-*/
+main_loop() function which handles turns. */
 class SPGame{
     // Standard Class Constructor
     constructor(name){
