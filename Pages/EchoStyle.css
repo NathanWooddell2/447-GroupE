@@ -37,3 +37,15 @@ body {
     padding: 1%;
 }
 #menu-button:hover {opacity: 0.9;}
+
+th {
+    background-color: #692c29;
+    color: #e9cc66;
+}
+
+#scoretable {
+    color: #692c29;
+    font-weight: normal;
+    border: 0px;
+    font-size: 150%;
+}
