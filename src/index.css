@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: myFirstFont;
-  src: url(/../battleship/public/LondrinaSolid-Light.ttf);
+  src: url(/public/LondrinaSolid-Light.ttf);
 }
 * {
   font-family: myFirstFont;
