@@ -5,6 +5,11 @@
 
 import React from "react";
 import { useState } from "react";
+import SinglePlayer from '../gamemodes/singlePlayer';
+import MultiPlayer from '../gamemodes/multiPlayer';
+import LoadGame from '../loaders/loadPlayer';
+import ScoreBoard from '../loaders/scoreBoard';
+
 
 export default function MainMenu(){
     const [state, setState] = useState('start')
@@ -16,31 +21,41 @@ export default function MainMenu(){
                 EXTREME BATTLESHIP
             </header>
             <table className="Menu-Buttons">
+                <tbody>
+                    <tr >
+                        <td className="Menu-Button">
+                            {state === 'start' && (
+                                <button className="Menu-Button" onClick = {() => setState('singlePlayer')}>Singleplayer</button>
+                            )}
+                            {state === 'singlePlayer' && <SinglePlayer />}
+                        </td>
+                    </tr>
 
-                {state === 'start' && (
-                    <button className="Menu-Button" playGame={() => setState('singlePlayer')}>Singleplayer</button>
-                )}
-                {state === 'singlePlayer' && <singlePlayer />}
-
-    
-                {state === 'start' && (
-                    <button className="Menu-Button" loadGame = {() => setState('loadGame')}>Load Game</button>
-                )}
-                {state ==='loadGame' && <loadGame />}
-
-
-                {state === 'start' && (
-                    <button className="Menu-Button" multiPlayer = {() => setState('multiPlayer')}>Multiplayer</button>
-                )}
-                {state === 'multiplayer' && <multiPlayer />}
-
-
-                {state === "start" && (
-                    <button className="Menu-Button" scoreBoard = {() => setState('scoreBoard')}>Scoreboard</button>
-                )}
-                {state === 'scores' && <scoreBoard />}
-
-                     
+                    <tr>
+                        <td>
+                            {state === 'start' && (
+                                <button className="Menu-Button" onClick = {() => setState('loadGame')}>Load Game</button>
+                            )}
+                            {state ==='loadGame' && <LoadGame />}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {state === 'start' && (
+                                <button className="Menu-Button" onClick = {() => setState('multiPlayer')}>Multiplayer</button>
+                            )}
+                            {state === 'multiplayer' && <MultiPlayer />}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {state === "start" && (
+                                <button className="Menu-Button" onClick = {() => setState('scoreBoard')}>Scoreboard</button>
+                            )}
+                            {state === 'scores' && <ScoreBoard />}
+                        </td>
+                    </tr>
+                </tbody>    
             </table>
         </div>
     );

@@ -15,3 +15,5 @@ class multiPlayer extends React.Component {
 
     // Render function
 }
+
+export default multiPlayer
