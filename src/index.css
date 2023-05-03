@@ -34,20 +34,38 @@ code {
   table-layout: fixed;
 }
 .Menu-Button {
-  margin: .5%; 
-  border: 0px;
-  font-weight: bold;
   opacity: 0.6;
   transition: 0.3s;
+  
   font-size: 300%;
-  padding: 1%;
   background-color: #a52931;
   color: #e9cc66;
+  border: 0px;
+  font-weight: bold;
+
+  padding: 1%;
   width: 100%;
   padding-left: 10%;
   padding-right: 10%;
-}
-.Menu-Button:hover {opacity: 0.9;}
+  margin: .5%;
+}.Menu-Button:hover {opacity: 0.9;}
+
+
+.Main-Menu-BTN {
+  
+  transition: 0.3s;
+  opacity: 0.6;
+  transition: 0.3s;
+
+  background-color: #a52931;
+  color: #e9cc66;
+  font-size: 300%;
+  font-weight: bold;
+  border: 0px;
+  
+  margin: .5%;
+  width: 20%;
+}.Main-Menu-BTN:hover {opacity: 0.9;}
 
 
 
@@ -56,8 +74,8 @@ code {
   background-color: lightskyblue;
   border: 1px solid #999;
   float: left;
-  height: 25;
-  width: 25;
+  height: 25px;
+  width: 25px;
 }
 
 .board {
