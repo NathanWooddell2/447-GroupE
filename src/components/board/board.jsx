@@ -60,7 +60,7 @@ class gameBoard extends React.Component {
 
             for (let col = 0; col < this.xValue; col++){
                 // This will need to be updated to reflect the tile class.
-                gameGrid[row].push(<board_Tile key ={`${col}${row}`} color="1"/>);
+                gameGrid[row].push(<board_Tile key ={`${col}${row}`}/>);
             }}
 
     // The board to be rendered

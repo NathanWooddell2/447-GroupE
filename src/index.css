@@ -33,6 +33,7 @@ code {
 .Menu-Buttons {
   table-layout: fixed;
 }
+
 .Menu-Button {
   opacity: 0.6;
   transition: 0.3s;
@@ -67,6 +68,21 @@ code {
   width: 20%;
 }.Main-Menu-BTN:hover {opacity: 0.9;}
 
+.Scoreboard_General {
+  background-color: transparent;
+  padding: 5px;
+  text-align: center;
+  border-collapse: separate;
+  color: #692c29;
+  font-weight: bold;
+  font-size: 200%;
+}
+.Scoreboard_Header {
+  background-color: #a52931;
+  color: #e9cc66;
+  font-weight: bolder;
+  padding: 5%;
+}
 
 
 /* Board Components */
