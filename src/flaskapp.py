@@ -15,9 +15,11 @@ from flask import Flask, jsonify                # Flask will read from JSON to o
 from flask_sqlalchemy import SQLAlchemy         # SQL Alchemy will be used to directly interact with the database.
 from flask_marshmallow import Marshmallow
 from dataclasses import dataclass
+from flask_cors import CORS
 import json                                     # JSON Will be used to fetch data from battleship.js
 
 app = Flask(__name__)
+CORS(app)
 
 # --- Database setup ---
 

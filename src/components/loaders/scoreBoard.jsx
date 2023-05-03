@@ -7,7 +7,12 @@ import APIService from '../APIService'
 
 
 function ScoreBoard(){
-    const [data, setData] = useState([{}])
+    const [data, setData] = useState([{
+        name: "",
+        level: "",
+        accuracy: "",
+        id: "",
+    }])
 
     useEffect(() => {
         fetch('http://127.0.0.1:5000/getAll', {

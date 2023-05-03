@@ -50,7 +50,7 @@ export default function MainMenu(){
                             {state === 'singlePlayer' && <SinglePlayer />}
                             {state === 'multiplayer' && <MultiPlayer />}
                             {state ==='loadGame' && <LoadGame />}
-                            {state === 'scores' && <ScoreBoard />}
+                            {state === 'scoreBoard' && <ScoreBoard />}
                         </tr>  
             </table>
         </div>
