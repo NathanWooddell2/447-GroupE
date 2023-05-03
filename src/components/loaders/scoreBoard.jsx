@@ -14,6 +14,22 @@ function ScoreBoard(){
         id: "",
     }])
 
+    const scores = 
+    {
+        "data": 
+            [
+                {
+                    "Group":"E",
+                    "Title":"Top Five Scores",
+                    "KikiDuverre":"100",
+                    "ChiaPoppybottom":"97",
+                    "ValUndal":"92",
+                    "LucyWeissdottir":"83",
+                    "AstraUndal":"65"
+                }
+            ]
+        }
+
     useEffect(() => {
         fetch('http://127.0.0.1:5000/getAll', {
           'method':'GET',
@@ -23,14 +39,26 @@ function ScoreBoard(){
         })
         .then(resp => resp.json())
         .then(resp => setData(resp))
+        
         .catch(error => console.log(error))
       }, [])
 
-    console.log(data);
+    const submitData = (data) => {
+        APIService.scoresAPIFunction(scores)
+        .then(resp => console.log(resp))
+        .catch(error => console.log(error))
+    }
+
+    /*<tr>
+        <button onClick = {() => submitData(data)}> Submit Data</button>
+    </tr>
+    console.log(data);*/
     return(
         <body>
+            
             <table>
                 <thead>
+                    
                     <tr>
                         <td>
                             Name

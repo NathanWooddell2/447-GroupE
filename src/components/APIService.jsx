@@ -7,8 +7,8 @@ export default class APIService {
             },
             body: JSON.stringify(body)
         })
-    .then(resp => resp.json())
+        .then(resp => console.log(resp))
     }
 
-    
+
 }
