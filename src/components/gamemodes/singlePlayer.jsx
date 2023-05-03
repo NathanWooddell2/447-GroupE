@@ -5,15 +5,13 @@
 
 // Import Statements
 import React from "react";
-import { setState } from "react";
-import { useState } from "react";
 import gameBoard from "../board/board";
 
 class SingleplayerGame extends React.Component {
     
     // Load a player from the Database -> uses a PID
     loadFromPlayer(PID){
-
+        gameBoard.difficulty = PID.difficulty;    
     }
 
     // Makes a new player -> Prompts the names
@@ -24,7 +22,27 @@ class SingleplayerGame extends React.Component {
     // A render function for the 
     render() {
         return(
-            <h1>THERE IS SUPPOSED TO BE A GAME HERE</h1>
+            <body>
+                <h1>THERE IS SUPPOSED TO BE A GAME HERE</h1>
+                <table>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>Player</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td >
+                            <table>
+                                <tr>
+                                    <td>AI</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </body>
         );
     }
 }

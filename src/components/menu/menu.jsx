@@ -32,26 +32,32 @@ export default function MainMenu(){
                                 <button className="Menu-Button" onClick = {() => setState('start')}>Main Menu</button>
                             )}
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             {state === 'start' && (
                                 <button className="Menu-Button" onClick = {() => setState('singlePlayer')}>Singleplayer</button>
-                            )}
-                            
+                            )}    
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             {state === 'start' && (
                                 <button className="Menu-Button" onClick = {() => setState('loadGame')}>Load Game</button>
-                            )}
-                            
+                            )}    
                         </td>
-                        <td>
+                    </tr>
+                    <tr>
+                        <td className="Menu-Button">
                             {state === 'start' && (
                                 <button className="Menu-Button" onClick = {() => setState('multiPlayer')}>Multiplayer</button>
                             )}
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             {state === "start" && (
-                                <button className="Menu-Button" onClick = {() => setState('scoreBoard')}>Scoreboard</button>
+                                <button className="Menu-Button" onClick = {() => setState('scores')}>Scoreboard</button>
                             )}    
                         </td>
                     </tr>

@@ -7,10 +7,11 @@
 // --- IMPORT STATEMENT BLOCK --- 
 import React from 'react';
 import board_Tile from './tile';
+var difficulty = 1;
 
 class gameBoard extends React.Component {
     // Some Variables applicable to the board
-    difficulty;                             // Board Difficulty
+    difficulty = 1;                             // Board Difficulty
     owner;                                  // Board Owner
     xValue;                                 // Board Size
 
