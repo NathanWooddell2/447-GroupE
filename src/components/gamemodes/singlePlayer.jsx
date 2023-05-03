@@ -5,8 +5,12 @@
 
 // Import Statements
 import React from "react";
+import { setState } from "react";
+import { useState } from "react";
+import gameBoard from "../board/board";
 
-class singleplayerGame extends React.Component {
+class SingleplayerGame extends React.Component {
+    
     // Load a player from the Database -> uses a PID
     loadFromPlayer(PID){
 
@@ -16,14 +20,15 @@ class singleplayerGame extends React.Component {
     MakeNewPlayer(){
 
     }
-
+    
     // A render function for the 
     render() {
-
         return(
             <h1>THERE IS SUPPOSED TO BE A GAME HERE</h1>
         );
     }
 }
 
-export default singleplayerGame
+export default SingleplayerGame
+
+

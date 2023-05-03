@@ -14,6 +14,10 @@ import ScoreBoard from '../loaders/scoreBoard';
 export default function MainMenu(){
     const [state, setState] = useState('start')
 
+    /*function Content({state}) {
+        if state === ''
+    }*/
+
     return(
         <div className="Menu-Header">
 
@@ -23,35 +27,39 @@ export default function MainMenu(){
             <table className="Menu-Buttons">
                 <tbody>
                     <tr >
-                        <td className="Menu-Button">
+                        <td>
+                            {state != 'start' && (
+                                <button className="Menu-Button" onClick = {() => setState('start')}>Main Menu</button>
+                            )}
+                        </td>
+                        <td>
                             {state === 'start' && (
                                 <button className="Menu-Button" onClick = {() => setState('singlePlayer')}>Singleplayer</button>
                             )}
-                            {state === 'singlePlayer' && <SinglePlayer />}
+                            
                         </td>
-                    </tr>
-
-                    <tr>
                         <td>
                             {state === 'start' && (
                                 <button className="Menu-Button" onClick = {() => setState('loadGame')}>Load Game</button>
                             )}
-                            {state ==='loadGame' && <LoadGame />}
+                            
                         </td>
-                    </tr>
-                    <tr>
                         <td>
                             {state === 'start' && (
                                 <button className="Menu-Button" onClick = {() => setState('multiPlayer')}>Multiplayer</button>
                             )}
-                            {state === 'multiplayer' && <MultiPlayer />}
+                        </td>
+                        <td>
+                            {state === "start" && (
+                                <button className="Menu-Button" onClick = {() => setState('scoreBoard')}>Scoreboard</button>
+                            )}    
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            {state === "start" && (
-                                <button className="Menu-Button" onClick = {() => setState('scoreBoard')}>Scoreboard</button>
-                            )}
+                            {state === 'singlePlayer' && <SinglePlayer />}
+                            {state === 'multiplayer' && <MultiPlayer />}
+                            {state ==='loadGame' && <LoadGame />}
                             {state === 'scores' && <ScoreBoard />}
                         </td>
                     </tr>
