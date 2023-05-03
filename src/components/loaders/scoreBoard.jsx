@@ -21,6 +21,7 @@ function ScoreBoard(){
         .catch(error => console.log(error))
       }, [])
 
+    console.log(data);
     return(
         <body>
             <table>
@@ -41,7 +42,7 @@ function ScoreBoard(){
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(player => {
+                    {true && data.map( (player) => {
                         return (
                             <tr key = {player.id}>
                                 <td>
@@ -51,7 +52,7 @@ function ScoreBoard(){
                                     {player.level}
                                 </td>
                                 <td>
-                                    {player.accuracy * 100}
+                                    {player.accuracy}
                                 </td>
                                 <td>
                                     {player.id}
