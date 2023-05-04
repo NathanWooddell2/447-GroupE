@@ -5,13 +5,13 @@
 
 // Import Statements
 import React from "react";
-import gameBoard from "../board/board";
+import GameBoard from "../board/board";
 
 class SingleplayerGame extends React.Component {
     
     // Load a player from the Database -> uses a PID
     loadFromPlayer(PID){
-        gameBoard.difficulty = PID.difficulty;    
+        //GameBoard.difficulty = PID.difficulty;    
     }
 
     // Makes a new player -> Prompts the names
@@ -29,7 +29,7 @@ class SingleplayerGame extends React.Component {
                         <td>
                             <table>
                                 <tr>
-                                    <td>Player</td>
+                                    <td><GameBoard difficulty = {1}/></td>
                                 </tr>
                             </table>
                         </td>
