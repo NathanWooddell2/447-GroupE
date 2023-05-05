@@ -18,7 +18,7 @@ class board_Tile extends React.Component {
     render() {
         return(
             <button className = 'tile'>
-                
+                {this.props.value}
             </button>
         )
     }

@@ -6,12 +6,11 @@
 
 // --- IMPORT STATEMENT BLOCK --- 
 import React from 'react';
-import Board_Tile from './tile';
-//var difficulty = 1;
+import board_Tile from './tile';
 
 class gameBoard extends React.Component {
     // Some Variables applicable to the board
-    difficulty = this.props.difficulty;                             // Board Difficulty
+    difficulty;                             // Board Difficulty
     owner;                                  // Board Owner
     xValue;                                 // Board Size
 
@@ -38,12 +37,14 @@ class gameBoard extends React.Component {
 
 
     // A function to determine what a tile will display
-    renderTile () {
+    renderTile (i) {
+        return <board_Tile xValue={i}/>;
+        /*
         if(this.owner === "PLAYER"){
             // RENDER VIEW FOR PLAYER BOARD
         }else{
             // RENDER VIEW FOR COMPUTER BOARD
-        }
+        }*/
     }
 
 
@@ -53,46 +54,20 @@ class gameBoard extends React.Component {
         this.getBoardSize(this.difficulty);
         
     // Create a board of size x
-        let gameGrid = [];
-        var gameRow = [];
-        let tileID = 0;
+        const gameGrid = [];
 
         for (let row = 0; row < this.xValue; row++){
+            gameGrid.push([]);
+
             for (let col = 0; col < this.xValue; col++){
                 // This will need to be updated to reflect the tile class.
-                gameRow.push(
-                    {
-                        tile: <Board_Tile key={tileID}/>,
-                        row: row,
-                        column: col,
-                        id: tileID
-                    });
-                tileID++;
-            }
-            gameRow.push('\n');
-            gameGrid.push(gameRow);
-            gameRow = [];
-            
-        }
-        const gameStuff = gameGrid;
-        let board = Array(this.xValue+1).fill("0\n");
+                gameGrid[row].push(<board_Tile key ={`${col}${row}`} color="1"/>);
+            }}
 
     // The board to be rendered
         return(
             <div className='Board'>
-                {gameStuff.map((row) =>
-                    <div>
-                        {
-                            row.map
-                            (
-                                (col) => 
-                                    <td key={col.id}>
-                                        {col.tile}
-                                    </td>
-                            )
-                        }
-                    </div>
-                )}
+                {gameGrid}
             </div>
         );
     };    
