@@ -7,10 +7,20 @@
 import React from "react";
 import GameBoard from "../board/board";
 import AppDifficulty from "../appDifficulty";
+//import GameLoop from "GameLoop";
 
 function SingleplayerGame(props) {
     //AppDifficulty.difficulty = props.difficulty;
     var difficulty = AppDifficulty.difficulty;
+    
+
+
+    function gameLoop(){
+
+    }
+    
+
+
 
     return(
         <body>
@@ -20,19 +30,31 @@ function SingleplayerGame(props) {
                     <td>
                         <table>
                             <tr>
-                                <td className="playerBoard"><GameBoard difficulty = {props.difficulty}/></td>
+                                <td className="playerBoard"><GameBoard difficulty = {props.difficulty} player = "PC"/></td>
                             </tr>
                         </table>
                     </td>
                     <td >
                         <table>
                             <tr>
-                                <td className="AIBoard"><GameBoard difficulty = {props.difficulty}/></td>
+                                <td className="AIBoard"><GameBoard difficulty = {props.difficulty} player = "AI"/></td>
                             </tr>
                         </table>
                     </td>
                 </tr>
             </table>
+            <div id="boards-contain">
+                <div class="select-contain">
+                    <div id="0" className="battleship battleship-design" draggable="true"></div>
+                    <div id="1" className="carrier carrier-design" draggable="true"></div>
+                    <div id="2" className="cruiser cruiser-design" draggable="true"></div>
+                    <div id="3" className="destroyer destroyer-design" draggable="true"></div>
+                    <div id="4" className="patrol patrol-design" draggable="true"></div>
+                    <div id="5" className="rescue rescue-design" draggable="true"></div>
+                    <div id="6" className="submarine submarine-design" draggable="true"></div>
+                </div>
+            </div>
+
         </body>
     );
 }

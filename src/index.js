@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import MainMenu from './components/menu/menu';
 import reportWebVitals from './reportWebVitals';
-import AppDifficulty from './components/appDifficulty';
+//import AppDifficulty from './components/appDifficulty';
 
 ReactDOM.render(<MainMenu />, document.getElementById('root'));
 

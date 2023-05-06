@@ -6,31 +6,68 @@
 // Import statement
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Popup from 'reactjs-popup';
 const red = "#FF0000";
 const orange = "#FFD712";
 
 
 // General Tile Component
-class board_Tile extends React.Component {
-    constructor(props){
+function Board_Tile(props){
+    /*constructor(props){
         super(props);
         this.state = {
             color: null,
             value: null,
         };
         this.changeColor = this.changeColor.bind(this)
-    }
+    }*/
     // Variable Definitions
-    has_ship;
-    attacked;
-    owner;
+    var has_ship = false;
+    var attacked = false;
+    var owner;
 
-    changeColor(){
+    function changeColor(){
         this.setState({color: red})
     }
     // Render Function
-    render() {
-        if (this.has_ship === true){
+    function buildTile(){
+        if(props.player==="PC"){
+            return(
+                <Popup trigger= 
+                    {<button className = 'tile'></button>}
+                    position="right center">
+                    {
+                        close => (
+                            <div>
+                                <div className='content'>
+                                    Select your ship type for this tile.
+                                </div>
+                                <div>
+                                    <button onClick= 
+                                        {() => close()}>
+                                            Select.
+                                    </button>
+                                </div>
+                            </div>
+                        )
+                    }    
+                </Popup>
+            );
+        }
+        else{
+            return(
+                <button className = 'tile'>
+                </button>
+            )
+        }
+    }
+
+    return (buildTile());
+}
+
+export default Board_Tile;
+
+/*if (this.has_ship === true){
             return(
                 <button className = 'tile' 
 
@@ -45,8 +82,4 @@ class board_Tile extends React.Component {
                     {this.state.value}
                 </button>
             )
-        }
-    }
-}
-
-export default board_Tile;
+        }*/

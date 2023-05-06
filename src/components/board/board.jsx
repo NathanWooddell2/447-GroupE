@@ -9,37 +9,37 @@ import React from 'react';
 import Board_Tile from './tile';
 //var difficulty = 1;
 
-class gameBoard extends React.Component {
+function GameBoard(props) {
     // Some Variables applicable to the board
-    difficulty = this.props.difficulty;                             // Board Difficulty
-    owner;                                  // Board Owner
-    xValue;                                 // Board Size
+    var difficulty = props.difficulty;                             // Board Difficulty
+    var owner;                                  // Board Owner
+    var xValue;                                 // Board Size
 
 
     // A function to determine some statistics about the board
-    getBoardSize(diff){
+    function getBoardSize(diff){
         if(diff === 1){
-            this.xValue = 8;
+            xValue = 8;
             return;
         }else if(diff === 2){
-            this.xValue = 10;
+            xValue = 10;
             return;
         }else{
-            this.xValue = 12;
+            xValue = 12;
             return;
         }
     }
     
 
     // Function to place the ships on the board - will require the ship class
-    placeShip(x,y){
+    function placeShip(x,y){
         return
     }
 
 
     // A function to determine what a tile will display
-    renderTile () {
-        if(this.owner === "PLAYER"){
+    function renderTile () {
+        if(owner === "PLAYER"){
             // RENDER VIEW FOR PLAYER BOARD
         }else{
             // RENDER VIEW FOR COMPUTER BOARD
@@ -48,24 +48,25 @@ class gameBoard extends React.Component {
 
 
     // Render the board based on a variety of factors - size will need to be determined by player
-    render () {
+    function buildBoard () {
         // Determine board size using helpers
-        this.getBoardSize(this.difficulty);
+        getBoardSize(difficulty);
         
     // Create a board of size x
         let gameGrid = [];
         var gameRow = [];
         let tileID = 0;
 
-        for (let row = 0; row < this.xValue; row++){
-            for (let col = 0; col < this.xValue; col++){
+        for (let row = 0; row < xValue; row++){
+            for (let col = 0; col < xValue; col++){
                 // This will need to be updated to reflect the tile class.
                 gameRow.push(
                     {
-                        tile: <Board_Tile key={tileID}/>,
+                        tile: <Board_Tile player={props.player} key={tileID} />,
                         rowNum: row,
                         column: col,
-                        id: tileID
+                        id: tileID,
+                        ship: null
                     });
                 tileID++;
             }
@@ -75,12 +76,12 @@ class gameBoard extends React.Component {
             
         }
         const gameStuff = gameGrid;
-        let board = Array(this.xValue+1).fill("0\n");
+        let board = Array(xValue+1).fill("0\n");
 
     // The board to be rendered
         return(
             <div className='Board'>
-                {gameStuff.map((row) =>
+                {gameGrid.map((row) =>
                     <div>
                         {
                             row.map
@@ -93,9 +94,11 @@ class gameBoard extends React.Component {
                         }
                     </div>
                 )}
+                <button onClick = {() => console.log({gameGrid}) }>Grid dump</button>
             </div>
         );
     };    
+    return(buildBoard());
 }
 
-export default gameBoard;
+export default GameBoard;
