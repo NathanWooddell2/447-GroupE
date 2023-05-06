@@ -14,7 +14,7 @@ function GameBoard(props) {
     var difficulty = props.difficulty;                             // Board Difficulty
     var owner;                                  // Board Owner
     var xValue;                                 // Board Size
-
+    var ships = [false, false, false, false, false, false, false];
 
     // A function to determine some statistics about the board
     function getBoardSize(diff){
@@ -62,7 +62,7 @@ function GameBoard(props) {
                 // This will need to be updated to reflect the tile class.
                 gameRow.push(
                     {
-                        tile: <Board_Tile player={props.player} key={tileID} />,
+                        tile: <Board_Tile player={props.player} ships={ships} key={tileID} />,
                         rowNum: row,
                         column: col,
                         id: tileID,
