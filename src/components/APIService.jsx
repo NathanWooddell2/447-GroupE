@@ -10,5 +10,16 @@ export default class APIService {
         .then(resp => console.log(resp))
     }
 
+    static retrievePlayer(id){
+        return fetch(`http://127.0.0.1:5000/getPlayer/${id}`, {
+            'method':'GET',
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        //.then(resp => console.log(resp))
+        .catch(error => console.log(error))
+    }
 
 }

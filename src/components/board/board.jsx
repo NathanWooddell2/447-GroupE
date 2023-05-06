@@ -63,7 +63,7 @@ class gameBoard extends React.Component {
                 gameRow.push(
                     {
                         tile: <Board_Tile key={tileID}/>,
-                        row: row,
+                        rowNum: row,
                         column: col,
                         id: tileID
                     });
@@ -86,7 +86,7 @@ class gameBoard extends React.Component {
                             row.map
                             (
                                 (col) => 
-                                    <td key={col.id}>
+                                    <td id={col.id} key={col.id} x={row.column} y={row.rowNum}>
                                         {col.tile}
                                     </td>
                             )

@@ -9,14 +9,12 @@ import SinglePlayer from '../gamemodes/singlePlayer';
 import MultiPlayer from '../gamemodes/multiPlayer';
 import LoadGame from '../loaders/loadPlayer';
 import ScoreBoard from '../loaders/scoreBoard';
+import AppDifficulty from '../appDifficulty';
 
 
 export default function MainMenu(){
-    const [state, setState] = useState('start')
-
-    /*function Content({state}) {
-        if state === ''
-    }*/
+    const [state, setState] = useState('start');
+    var difficulty = AppDifficulty.difficulty;
 
     return(
         <div className="Menu-Header">
@@ -40,6 +38,10 @@ export default function MainMenu(){
                     )}
                             
                     {state === 'start' && (
+                        <button className="Menu-Button" onClick = {() => AppDifficulty.difficulty=1}>Reset Load</button>
+                    )}
+
+                    {state === 'start' && (
                         <button className="Menu-Button" onClick = {() => setState('multiPlayer')}>Multiplayer</button>
                     )}
 
@@ -47,9 +49,9 @@ export default function MainMenu(){
                         <button className="Menu-Button" onClick = {() => setState('scoreBoard')}>Scoreboard</button>
                     )}    
                         <tr>
-                            {state === 'singlePlayer' && <SinglePlayer />}
+                            {state === 'singlePlayer' && <SinglePlayer difficulty = {difficulty || 1}/>}
                             {state === 'multiplayer' && <MultiPlayer />}
-                            {state ==='loadGame' && <LoadGame />}
+                            {state ==='loadGame' && <LoadGame difficulty = {difficulty}/>}
                             {state === 'scoreBoard' && <ScoreBoard />}
                         </tr>  
             </table>

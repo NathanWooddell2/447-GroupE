@@ -6,47 +6,36 @@
 // Import Statements
 import React from "react";
 import GameBoard from "../board/board";
+import AppDifficulty from "../appDifficulty";
 
-class SingleplayerGame extends React.Component {
-    
-    // Load a player from the Database -> uses a PID
-    loadFromPlayer(PID){
-        //GameBoard.difficulty = PID.difficulty;    
-    }
+function SingleplayerGame(props) {
+    //AppDifficulty.difficulty = props.difficulty;
+    var difficulty = AppDifficulty.difficulty;
 
-    // Makes a new player -> Prompts the names
-    MakeNewPlayer(){
-
-    }
-    
-    // A render function for the 
-    render() {
-        return(
-            <body>
-                <h1>THERE IS SUPPOSED TO BE A GAME HERE</h1>
-                <table>
-                    <tr>
-                        <td>
-                            <table>
-                                <tr>
-                                    <td><GameBoard difficulty = {1}/></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td >
-                            <table>
-                                <tr>
-                                    <td>AI</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </body>
-        );
-    }
+    return(
+        <body>
+            <h1>THERE IS SUPPOSED TO BE A GAME HERE {props.difficulty}</h1>
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td className="playerBoard"><GameBoard difficulty = {props.difficulty}/></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td >
+                        <table>
+                            <tr>
+                                <td className="AIBoard"><GameBoard difficulty = {props.difficulty}/></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body>
+    );
 }
 
 export default SingleplayerGame
-
 
