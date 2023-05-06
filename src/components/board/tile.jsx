@@ -6,6 +6,7 @@
 // Import statement
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useState } from "react";
 import Popup from 'reactjs-popup';
 const red = "#FF0000";
 const orange = "#FFD712";
@@ -13,6 +14,7 @@ const orange = "#FFD712";
 
 // General Tile Component
 function Board_Tile(props){
+    const [state, setState] = useState('start');
     /*constructor(props){
         super(props);
         this.state = {
@@ -32,6 +34,7 @@ function Board_Tile(props){
     // Render Function
     function buildTile(){
         if(props.player==="PC"){
+            
             return(
                 <Popup trigger= 
                     {<button className = 'tile'></button>}
@@ -43,9 +46,23 @@ function Board_Tile(props){
                                     Select your ship type for this tile.
                                 </div>
                                 <div>
+                                    <li>
+                                        <button id="Carrier" onClick={() => {
+                                            pickShip("Carrier"); 
+                                            close(); }
+                                        }>Carrier</button>
+                                    </li>
+                                    <li>
+                                        <button onClick={() => {
+                                            pickShip("Cruiser"); 
+                                            close(); }
+                                        }>Cruiser</button>
+                                    </li>
+                                </div>
+                                <div>
                                     <button onClick= 
                                         {() => close()}>
-                                            Select.
+                                            Close.
                                     </button>
                                 </div>
                             </div>
@@ -60,6 +77,13 @@ function Board_Tile(props){
                 </button>
             )
         }
+    }
+
+    function pickShip(ship){
+        //close();
+        console.log(ship);
+        console.log(document.getElementById(ship));
+        document.getElementById(ship).onClick="close()";
     }
 
     return (buildTile());
