@@ -90,10 +90,14 @@ code {
   background-color: lightskyblue;
   border: 1px solid #999;
   float: left;
-  height: 25px;
-  width: 25px;
+  height: 3em;
+  width: 3em;
 }
 
 .board {
   background-color: black;
+}
+
+.board-row {
+  
 }
