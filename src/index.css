@@ -93,11 +93,11 @@ code {
   height: 3em;
   width: 3em;
 }
-
 .board {
   background-color: black;
 }
 
 .board-row {
+  background: transparent;
   
 }
