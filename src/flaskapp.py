@@ -10,6 +10,15 @@
 # python terminal and type "pip install flask" (this will only work in the python
 # terminal).
 
+# PIP install list
+# pip install flask
+# pip install flask_sqlalchemy
+# pip install flask_marshmallow
+# pip install flask_cors
+# pip install SQLAlchemy
+# pip install MySQL-python
+
+
 # --- IMPORT/GLOBAL SPACE ---
 from flask import Flask, jsonify                # Flask will read from JSON to our SQL database
 from flask_sqlalchemy import SQLAlchemy         # SQL Alchemy will be used to directly interact with the database.
