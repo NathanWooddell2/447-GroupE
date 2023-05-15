@@ -32,7 +32,8 @@ function GameBoard(props) {
 
     // Function to place the ships on the board - will require the ship class
     function placeShip(x,y){
-        
+        console.log(x);
+        console.log(y);
         return;
     }
 
@@ -52,7 +53,7 @@ function GameBoard(props) {
                 // This will need to be updated to reflect the tile class.
                 gameRow.push(
                     {
-                        tile: <BoardTile player={props.player} ships={ships} key={tileID} />,
+                        tile: <BoardTile player={props.player} ships={ships} key={tileID} row={row} col={col} placeShip={placeShip}/>,
                         rowNum: row,
                         colNum: col,
                         id: tileID,
@@ -60,7 +61,7 @@ function GameBoard(props) {
                     });
                 tileID++;
             }
-            gameRow.push('\n');
+            //gameRow.push('\n');
             gameGrid.push(gameRow);
             gameRow = [];
         }

@@ -7,7 +7,9 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import Popup from 'reactjs-popup';
-import battleshipHorzHead from "../../shipImages/Battleship/BattleshipHorizHead.png"
+import battleshipHorzHead from "../../shipImages/Battleship/BattleshipHorizHead.png";
+import GameBoard from './board.jsx';
+import placeShip from "./board.jsx";
 //const red = "#FF0000";
 //const orange = "#FFD712";
 
@@ -128,6 +130,8 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
+                    //console.log(props.col);
+                    props.placeShip(props.col, props.row);
                     break;
                 }
 
