@@ -105,12 +105,11 @@ function BoardTile(props){
     }
 
     function pickShip(ship, heading){
-        //close();
         console.log(ship);
         console.log(heading);
 
         // Check if the ship exists
-        if(has_ship === true){
+        if(state !== 'empty'){
             console.log("Cannot Place Ship Here - Ship Already There");
             return;
         }
@@ -123,10 +122,10 @@ function BoardTile(props){
             case "Battleship":
                 if(ships[0] === true){
                     console.log("Battleship already placed");
-                    return;
+                    break;
                 }else{
                     ships[0] = true;
-                    has_ship = true;
+                    setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
                     break;
@@ -135,10 +134,10 @@ function BoardTile(props){
             case "Carrier":
                 if(ships[1] === true){
                     console.log("Carrier already placed");
-                    return;
+                    break;
                 }else{
                     ships[1] = true;
-                    has_ship = true;
+                    setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
                     break;
@@ -147,10 +146,10 @@ function BoardTile(props){
             case "Cruiser":
                 if(ships[2] === true){
                     console.log("Cruiser already placed");
-                    return;
+                    break;
                 }else{
                     ships[2] = true;
-                    has_ship = true;
+                    setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
                     break;
@@ -159,10 +158,10 @@ function BoardTile(props){
             case "Submarine":
                 if(ships[3] === true){
                     console.log("Submarine already placed");
-                    return;
+                    break;
                 }else{
                     ships[3] = true;
-                    has_ship = true;
+                    setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
                     break;
@@ -174,7 +173,7 @@ function BoardTile(props){
                     return;
                 }else{
                     ships[4] = true;
-                    has_ship = true;
+                    setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
                     break;
