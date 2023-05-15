@@ -7,7 +7,6 @@
 // --- IMPORT STATEMENT BLOCK --- 
 import React from 'react';
 import BoardTile from './tile';
-//var difficulty = 1;
 
 function GameBoard(props) {
     // Some Variables applicable to the board
@@ -33,7 +32,8 @@ function GameBoard(props) {
 
     // Function to place the ships on the board - will require the ship class
     function placeShip(x,y){
-        return
+        
+        return;
     }
 
 

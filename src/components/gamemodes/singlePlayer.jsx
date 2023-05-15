@@ -13,15 +13,6 @@ function SingleplayerGame(props) {
     //AppDifficulty.difficulty = props.difficulty;
     var difficulty = AppDifficulty.difficulty;
     
-
-
-    function gameLoop(){
-
-    }
-    
-
-
-
     return(
         <body className="game-frame">
             <h1>Current Level: {props.difficulty}</h1>
