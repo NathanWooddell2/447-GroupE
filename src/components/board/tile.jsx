@@ -5,7 +5,7 @@
 
 // Import statement
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Popup from 'reactjs-popup';
 import battleshipHorzHead from "../../shipImages/Battleship/BattleshipHorizHead.png"
 //const red = "#FF0000";
@@ -24,9 +24,15 @@ function BoardTile(props){
     var attacked = false;
     var heading = "horz"; 
 
-    function changeColor(){
-        //setState({color: red})
+    function forceUpdate(){
+        setState(prev => {
+            return {...prev}
+        })
     }
+
+    useEffect(() => {
+        console.log("Rerender");
+    })
 
     function onHeadingChange(e){
             heading = e.currentTarget.value;
@@ -38,7 +44,7 @@ function BoardTile(props){
             
             return(
                 <Popup trigger= 
-                    {<button className = 'tile'></button>}
+                    {<button className = 'tile'>{value}</button>}
 
                     position="right center">
                     {
@@ -57,6 +63,7 @@ function BoardTile(props){
 
                                     <button className = "ship-button" id="Battleship" onClick={() => {
                                         pickShip("Battleship", {heading}); 
+                                        //forceUpdate();
                                         close(); }
                                     }>Battleship</button>
                                     <button className = "ship-button" id="Carrier" onClick={() => {
@@ -91,7 +98,7 @@ function BoardTile(props){
         else{
             return(
                 <button className = 'tile'>
-                    {state.value}
+                   
                 </button>
             )
         }
@@ -108,7 +115,9 @@ function BoardTile(props){
             return;
         }
         //console.log(document.getElementById(ship));
-        setState({value: ship});
+        setValue(ship);
+        //setState(value);
+        console.log(value);
         //setState
         switch(ship) {
 
