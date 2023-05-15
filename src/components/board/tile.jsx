@@ -16,7 +16,7 @@ import battleshipHorzHead from "../../shipImages/Battleship/BattleshipHorizHead.
 function BoardTile(props){
     const [state, setState] = useState('empty');
     const [color, setColor] = useState(0);
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(0); 
     
     // Variable Definitions
     var ships = props.ships;
@@ -39,7 +39,6 @@ function BoardTile(props){
             return(
                 <Popup trigger= 
                     {<button className = 'tile'></button>}
-
                     position="right center">
                     {
                         close => (
@@ -98,10 +97,9 @@ function BoardTile(props){
     }
 
     function pickShip(ship, heading){
-        //close();
         console.log(ship);
         console.log(heading);
-
+        
         // Check if the ship exists
         if(has_ship === true){
             console.log("Cannot Place Ship Here - Ship Already There");
@@ -168,7 +166,6 @@ function BoardTile(props){
                 }
         }
     }
-
     return (buildTile());
 }
 
