@@ -68,6 +68,7 @@ code {
   width: 20%;
 }.Main-Menu-BTN:hover {opacity: 0.9;}
 
+/* stylesheet for the scoreboard */
 .Scoreboard_General {
   background-color: transparent;
   padding: 5px;
@@ -86,6 +87,11 @@ code {
 
 
 /* Board Components */
+.game-frame {
+  color:#692c29;
+  text-align: center;
+  background: transparent;
+}
 .tile {
   background-color: lightskyblue;
   border: 1px solid #999;
@@ -99,5 +105,28 @@ code {
 
 .board-row {
   background: transparent;
-  
 }
+
+
+/* Placement Menu Styles*/
+.place-menu {
+  background-image: linear-gradient(#c8734a, #e9cc66);
+  color:#692c29;
+  font-weight: bold;
+  width: 125%;
+  padding: 2%;
+  border: 2px solid #692c29;
+}
+
+.ship-button {
+  background: #a52931;
+  color: #e9cc66;
+
+  transition: 0.3s;
+  opacity: 0.6;
+  transition: 0.3s;
+  
+  border: 0px;
+  margin: .8%;
+  width: 50%;
+}.ship-button:hover {opacity: 0.9;}

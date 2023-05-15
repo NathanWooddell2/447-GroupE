@@ -23,8 +23,8 @@ function SingleplayerGame(props) {
 
 
     return(
-        <body>
-            <h1>THERE IS SUPPOSED TO BE A GAME HERE {props.difficulty}</h1>
+        <body className="game-frame">
+            <h1>Current Level: {props.difficulty}</h1>
             <table>
                 <tr>
                     <td>

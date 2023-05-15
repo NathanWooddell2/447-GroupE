@@ -38,7 +38,7 @@ export default function MainMenu(){
                     )}
                             
                     {state === 'start' && (
-                        <button className="Menu-Button" onClick = {() => AppDifficulty.difficulty=1}>Reset Load</button>
+                        <button className="Menu-Button" onClick = {() => AppDifficulty.difficulty=1}>Reset Game</button>
                     )}
 
                     {state === 'start' && (

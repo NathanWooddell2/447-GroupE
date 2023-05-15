@@ -5,30 +5,27 @@
 
 // Import statement
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { useState } from "react";
 import Popup from 'reactjs-popup';
 import battleshipHorzHead from "../../shipImages/Battleship/BattleshipHorizHead.png"
-const red = "#FF0000";
-const orange = "#FFD712";
+//const red = "#FF0000";
+//const orange = "#FFD712";
 
 
 // General Tile Component
-function Board_Tile(props){
+function BoardTile(props){
     const [state, setState] = useState('empty');
     const [color, setColor] = useState(0);
-    const [value, setValue] = useState(0); 
+    const [value, setValue] = useState(0);
     
     // Variable Definitions
     var ships = props.ships;
     var has_ship = false;
     var attacked = false;
-    var owner;
-    var heading = "horz";
-
+    var heading = "horz"; 
 
     function changeColor(){
-        setState({color: red})
+        //setState({color: red})
     }
 
     function onHeadingChange(e){
@@ -41,46 +38,48 @@ function Board_Tile(props){
             
             return(
                 <Popup trigger= 
-                    {<button className = 'tile'>
-                        {(state.value === "Battleship" && heading === "horz") && <img src={battleshipHorzHead} />}
-                    
-                    </button>}
+                    {<button className = 'tile'></button>}
+
                     position="right center">
                     {
                         close => (
-                            <div>
+                            <div className = "place-menu">
                                 <div className='content'>
-                                    Select your ship type for this tile.
+                                    Please Select a Ship:
                                 </div>
                                 <div>
-                                    <label>Select Orientation&nbsp;</label>
-                                    <label>Horizontal:</label>
-                                    <input type="radio" id="horz" name="heading" value="horz" checked="true" onChange={onHeadingChange}/>
-                                    <label>Vertical</label>
-                                    <input type="radio" id="vert" name="heading" value="vert" onChange={onHeadingChange}/>
-                                    <li>
-                                        <button id="Battleship" onClick={() => {
-                                            pickShip("Battleship", {heading}); 
-                                            close(); }
-                                        }>Battleship</button>
-                                    </li>
-                                    <li>
-                                        <button id="Carrier" onClick={() => {
-                                            pickShip("Carrier", {heading}); 
-                                            close(); }
-                                        }>Carrier</button>
-                                    </li>
-                                    <li>
-                                        <button id="Cruiser" onClick={() => {
-                                            pickShip("Cruiser", {heading}); 
-                                            close(); }
-                                        }>Cruiser</button>
-                                    </li>
+                                    <label>Select Ship Direction:&nbsp;</label>
+                                    <br></br>
+                                    <label>Horizontal <input type="radio" id="horz" name="heading" value="horz" checked="true" onChange={onHeadingChange}/></label>
+                                    <br></br>
+                                    <label>Vertical <input type="radio" id="vert" name="heading" value="vert" onChange={onHeadingChange}/></label>
+                                    <br></br>
+
+                                    <button className = "ship-button" id="Battleship" onClick={() => {
+                                        pickShip("Battleship", {heading}); 
+                                        close(); }
+                                    }>Battleship</button>
+                                    <button className = "ship-button" id="Carrier" onClick={() => {
+                                        pickShip("Carrier", {heading}); 
+                                        close(); }
+                                    }>Carrier</button>
+                                    <button className = "ship-button" id="Cruiser" onClick={() => {
+                                        pickShip("Cruiser", {heading}); 
+                                        close(); }
+                                    }>Cruiser</button>
+                                     <button className="ship-button" id= "Submarine" onClick={() => {
+                                        pickShip("Submarine", {heading});
+                                        close(); }
+                                    }>Submarine</button>
+                                    <button className="ship-button" id= "Destroyer" onClick={() => {
+                                        pickShip("Destroyer", {heading});
+                                        close(); }
+                                    }>Destroyer</button>
                                 </div>
                                 <div>
-                                    <button onClick= 
+                                    <button className = "ship-button" onClick= 
                                         {() => close()}>
-                                            Close.
+                                            Close
                                     </button>
                                 </div>
                             </div>
@@ -102,40 +101,77 @@ function Board_Tile(props){
         //close();
         console.log(ship);
         console.log(heading);
+
+        // Check if the ship exists
+        if(has_ship === true){
+            console.log("Cannot Place Ship Here - Ship Already There");
+            return;
+        }
         //console.log(document.getElementById(ship));
         setState({value: ship});
         //setState
-        if(ship === "Battleship" && ships[0] == true){
-            console.log("Battleship already placed");
-        }
-        else if(ship === "Carrier" && ships[1] == true){
-            console.log("Carrier already placed.");
-        }
-        //else if
-        if(ship === "Carrier"){
-            ships[0] = true;
-        }
+        switch(ship) {
 
+            case "Battleship":
+                if(ships[0] === true){
+                    console.log("Battleship already placed");
+                    break;
+                }else{
+                    ships[0] = true;
+                    has_ship = true;
+                    // Iterative Placement based on len and orientation
+                    break;
+                }
+
+            case "Carrier":
+                if(ships[1] === true){
+                    console.log("Carrier already placed");
+                    break;
+                }else{
+                    ships[1] = true;
+                    has_ship = true;
+                    // Iterative Placement based on len and orientation
+                    break;
+                }
+
+            case "Cruiser":
+                if(ships[2] === true){
+                    console.log("Cruiser already placed");
+                    break;
+                }else{
+                    ships[2] = true;
+                    has_ship = true;
+                    // Iterative Placement based on len and orientation
+                    break;
+                }
+
+            case "Submarine":
+                if(ships[3] === true){
+                    console.log("Submarine already placed");
+                    break;
+                }else{
+                    ships[3] = true;
+                    has_ship = true;
+                    // Iterative Placement based on len and orientation
+                    break;
+                }
+
+            case "Destroyer":
+                if(ships[4] === true){
+                    console.log("Destroyer already placed");
+                    break;
+                }else{
+                    ships[4] = true;
+                    has_ship = true;
+                    // Iterative Placement based on len and orientation
+                    break;
+                }
+        }
     }
 
     return (buildTile());
 }
 
-export default Board_Tile;
+export default BoardTile;
 
-/*if (this.has_ship === true){
-            return(
-                <button className = 'tile' 
-
-                onClick={() => this.setState({value: 'Y'})}>
-                    {this.state.value}
-                </button>
-            )
-        }else{
-            return(
-                <button className = 'tile' 
-                onClick={() => this.setState({value: 'X'})}>
-                    {this.state.value}
-                </button>
-            )
-        }*/
+//{(state.value === "Battleship" && heading === "horz") && <img src={battleshipHorzHead} />}

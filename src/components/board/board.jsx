@@ -6,7 +6,7 @@
 
 // --- IMPORT STATEMENT BLOCK --- 
 import React from 'react';
-import Board_Tile from './tile';
+import BoardTile from './tile';
 //var difficulty = 1;
 
 function GameBoard(props) {
@@ -14,7 +14,7 @@ function GameBoard(props) {
     var difficulty = props.difficulty;                             // Board Difficulty
     var owner;                                  // Board Owner
     var xValue;                                 // Board Size
-    var ships = [false, false, false, false, false, false, false];
+    var ships = [false, false, false, false, false];
 
     // A function to determine some statistics about the board
     function getBoardSize(diff){
@@ -37,16 +37,6 @@ function GameBoard(props) {
     }
 
 
-    // A function to determine what a tile will display
-    function renderTile () {
-        if(owner === "PLAYER"){
-            // RENDER VIEW FOR PLAYER BOARD
-        }else{
-            // RENDER VIEW FOR COMPUTER BOARD
-        }
-    }
-
-
     // Render the board based on a variety of factors - size will need to be determined by player
     function buildBoard () {
         // Determine board size using helpers
@@ -62,9 +52,9 @@ function GameBoard(props) {
                 // This will need to be updated to reflect the tile class.
                 gameRow.push(
                     {
-                        tile: <Board_Tile player={props.player} ships={ships} key={tileID} />,
+                        tile: <BoardTile player={props.player} ships={ships} key={tileID} />,
                         rowNum: row,
-                        column: col,
+                        colNum: col,
                         id: tileID,
                         ship: null
                     });
@@ -73,10 +63,7 @@ function GameBoard(props) {
             gameRow.push('\n');
             gameGrid.push(gameRow);
             gameRow = [];
-            
         }
-        const gameStuff = gameGrid;
-        let board = Array(xValue+1).fill("0\n");
 
     // The board to be rendered
         return(
