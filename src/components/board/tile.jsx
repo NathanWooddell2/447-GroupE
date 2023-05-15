@@ -144,6 +144,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
+                    props.placeShip(props.col, props.row);
                     break;
                 }
 
@@ -156,6 +157,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
+                    props.placeShip(props.col, props.row);
                     break;
                 }
 
@@ -168,6 +170,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
+                    props.placeShip(props.col, props.row);
                     break;
                 }
 
@@ -180,6 +183,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
+                    props.placeShip(props.col, props.row);
                     break;
                 }
         }
