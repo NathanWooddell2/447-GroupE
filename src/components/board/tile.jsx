@@ -5,7 +5,7 @@
 
 // Import statement
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Popup from 'reactjs-popup';
 import battleshipHorzHead from "../../shipImages/Battleship/BattleshipHorizHead.png";
 import GameBoard from './board.jsx';
@@ -31,10 +31,6 @@ function BoardTile(props){
             return {...prev}
         })
     }
-
-    useEffect(() => {
-        console.log("Rerender");
-    })
 
     function onHeadingChange(e){
             heading = e.currentTarget.value;
@@ -117,7 +113,7 @@ function BoardTile(props){
         }
         //console.log(document.getElementById(ship));
         //setState(value);
-        console.log(value);
+        //console.log(value);
         //setState
         switch(ship) {
 
@@ -131,7 +127,7 @@ function BoardTile(props){
                     setValue(ship);
                     // Iterative Placement based on len and orientation
                     //console.log(props.col);
-                    props.placeShip(props.col, props.row);
+                    props.placeShip(props.col, props.row, ship, heading.heading);
                     break;
                 }
 
@@ -144,7 +140,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
-                    props.placeShip(props.col, props.row);
+                    props.placeShip(props.col, props.row, ship, heading.heading);
                     break;
                 }
 
@@ -157,7 +153,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
-                    props.placeShip(props.col, props.row);
+                    props.placeShip(props.col, props.row, ship, heading.heading);
                     break;
                 }
 
@@ -170,7 +166,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
-                    props.placeShip(props.col, props.row);
+                    props.placeShip(props.col, props.row, ship, heading.heading);
                     break;
                 }
 
@@ -183,7 +179,7 @@ function BoardTile(props){
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
-                    props.placeShip(props.col, props.row);
+                    props.placeShip(props.col, props.row, ship, heading.heading);
                     break;
                 }
         }

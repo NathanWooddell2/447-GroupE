@@ -14,6 +14,7 @@ function GameBoard(props) {
     var owner;                                  // Board Owner
     var xValue;                                 // Board Size
     var ships = [false, false, false, false, false];
+    var gameGrid = [];
 
     // A function to determine some statistics about the board
     function getBoardSize(diff){
@@ -31,9 +32,12 @@ function GameBoard(props) {
     
 
     // Function to place the ships on the board - will require the ship class
-    function placeShip(x,y){
+    function placeShip(x,y,ship,heading){
         console.log(x);
         console.log(y);
+        console.log(ship);
+        console.log(heading);
+        console.log(gameGrid[x][y]);
         return;
     }
 
@@ -44,7 +48,7 @@ function GameBoard(props) {
         getBoardSize(difficulty);
         
     // Create a board of size x
-        let gameGrid = [];
+        
         var gameRow = [];
         let tileID = 0;
 
