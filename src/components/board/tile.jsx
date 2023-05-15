@@ -59,15 +59,15 @@ function BoardTile(props){
                                     <label>Vertical <input type="radio" id="vert" name="heading" value="vert" onChange={onHeadingChange}/></label>
                                     <br></br>
 
+                                    <button className = "ship-button" id="Carrier" onClick={() => {
+                                        pickShip("Carrier", {heading}); 
+                                        close(); }
+                                    }>Carrier</button>
                                     <button className = "ship-button" id="Battleship" onClick={() => {
                                         pickShip("Battleship", {heading}); 
                                         //forceUpdate();
                                         close(); }
                                     }>Battleship</button>
-                                    <button className = "ship-button" id="Carrier" onClick={() => {
-                                        pickShip("Carrier", {heading}); 
-                                        close(); }
-                                    }>Carrier</button>
                                     <button className = "ship-button" id="Cruiser" onClick={() => {
                                         pickShip("Cruiser", {heading}); 
                                         close(); }
@@ -117,29 +117,31 @@ function BoardTile(props){
         //setState
         switch(ship) {
 
-            case "Battleship":
+            
+
+            case "Carrier":
                 if(ships[0] === true){
-                    console.log("Battleship already placed");
+                    console.log("Carrier already placed");
                     break;
                 }else{
                     ships[0] = true;
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
-                    //console.log(props.col);
                     props.placeShip(props.col, props.row, ship, heading.heading);
                     break;
                 }
 
-            case "Carrier":
+            case "Battleship":
                 if(ships[1] === true){
-                    console.log("Carrier already placed");
+                    console.log("Battleship already placed");
                     break;
                 }else{
                     ships[1] = true;
                     setState('occupied');
                     setValue(ship);
                     // Iterative Placement based on len and orientation
+                    //console.log(props.col);
                     props.placeShip(props.col, props.row, ship, heading.heading);
                     break;
                 }

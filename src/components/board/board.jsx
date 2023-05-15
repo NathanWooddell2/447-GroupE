@@ -14,6 +14,7 @@ function GameBoard(props) {
     var owner;                                  // Board Owner
     var xValue;                                 // Board Size
     var ships = [false, false, false, false, false];
+    var shiplens = [5, 4, 3, 3, 2];
     var gameGrid = [];
 
     // A function to determine some statistics about the board
