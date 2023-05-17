@@ -357,7 +357,7 @@ function beginBattleSingle() {
                 //-----------------
                 attacks = tile.id
                 //--------------------
-                choseTile(tile.classList)
+                choseTile(tile)
             }))
             yourTurn = true
             //added
@@ -376,17 +376,17 @@ const aiDestroyed = []
 
 
 //Player select's a tile to hit
-function choseTile(classList) { 
+function choseTile(tile) { 
     if (lose === false) {
-        const allGridTiles = document.querySelectorAll('#AI div')
-        //const enemyTile = allGridTiles.querySelector(`div[data-id='${attacks}']`)
-        //const enemyTile = allGridTiles[tile]
-        //allTiles
-        //const enemyTile = allGridTiles.querySelector(`div[id='${attacks}']`)
-        //const enemyTile = allGridTiles.item(`div[id='${attacks}']`)
-        const enemyTile = allGridTiles[attacks]
         
-        const obj = Object.values(classList)
+        console.log(tile)
+        allGridTiles = document.getElementById("AI")
+        console.log(allGridTiles)
+        allGridTiles = allGridTiles.getElementsByTagName("div")
+        console.log(allGridTiles)
+        enemyTile = allGridTiles[tile.id]
+        console.log(enemyTile)
+        
         //------------------------------------------------------------------------------------------------------
         //const enemyTile = allGridTiles.querySelector(`div[data-id='${attacks}']`) //CHOSING A TILE -----------------------
         //------------------------------------------------------------------------------------------------------
@@ -417,6 +417,9 @@ function choseTile(classList) {
         multiTurn = 'enemy'
         //const allGridTiles = document.querySelectorAll('#AI div')
         allGridTiles.forEach(tile => tile.replaceWith(tile.cloneNode(true)))
+        //const allTiles = document.querySelectorAll('#AI div')
+        allTiles.forEach(tile => tile.replaceWith(tile.cloneNode(true)))
+        
 
         if (selectGame === 'singlePlayer') {
             setTimeout(enemyTurn, 2000)
