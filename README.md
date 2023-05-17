@@ -18,14 +18,3 @@ second player in the other open tab. You should see that that the first player l
 
 The first player always goes first and choses a spot and if you go over to the other player's tab you can see that the tile chosen shows up on his board and same\
 goes for the next turn.
-
-CURRENT ERRORS / PROBLEMS:
-There's a problem with the game loop that I don't know how to fix. After the first shot by player 1 and the secodn shot by player 2, the game won't allow any more
-shots to be fired by either, I don't understand why this is.
-
-The attacks on the enemy ships, while they are detected on the enemy's side, they are never detected on the user who fired side since when you take a look
-the enemy's side of the board none of their ships are placed on your side. This is most likely due to a single line of code or something small as before I fixed an
-aspect of this multiplayer system the other user's ships were being placed on your side, indicating that the overall system of the enemy placement in multiplayer
-is most likely correct.
-
-Let me know if you have any questions about the code
