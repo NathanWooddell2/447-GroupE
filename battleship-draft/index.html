@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Battleship</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head> 
+<body>
+
+    <div id="information">
+        <p>Turn: <span id="turn-display"></span></p>
+        <p>Information: <span id="information"></span></p>
+    </div>
+
+    <div id="boards-contain"></div>
+
+    <div class="select-contain">
+        <div class="battleship battleship-design" draggable="true"></div>
+        <div class="carrier carrier-design" draggable="true"></div>
+        <div class="cruiser cruiser-design" draggable="true"></div>
+        <div class="destroyer destroyer-design" draggable="true"></div>
+        <div class="patrol patrol-design" draggable="true"></div>
+        <div class="rescue rescue-design" draggable="true"></div>
+        <div class="submarine submarine-design" draggable="true"></div>
+    </div>
+
+    <button id="begin-button">BEGIN</button>
+    <button id="rotate-button">ROTATE</button>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap');
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(/public/LondrinaSolid-Light.ttf);
+}
+* {
+  font-family: myFirstFont;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Menu Components */
+.Menu-Header {
+  background-image: linear-gradient(#c8734a, #e9cc66);
+  padding-top: 2.5%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Menu-Title {
+  font-size: 750%;
+  color: #692c29;
+  letter-spacing: .25cm;
+  font-weight: bold;
+}
+
+.Menu-Buttons {
+  table-layout: fixed;
+}
+
+.Menu-Button {
+  opacity: 0.6;
+  transition: 0.3s;
+  
+  font-size: 300%;
+  background-color: #a52931;
+  color: #e9cc66;
+  border: 0px;
+  font-weight: bold;
+
+  padding: 1%;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: .5%;
+}.Menu-Button:hover {opacity: 0.9;}
+
+
+.Main-Menu-BTN {
+  
+  transition: 0.3s;
+  opacity: 0.6;
+  transition: 0.3s;
+
+  background-color: #a52931;
+  color: #e9cc66;
+  font-size: 300%;
+  font-weight: bold;
+  border: 0px;
+  
+  margin: .5%;
+  width: 20%;
+}.Main-Menu-BTN:hover {opacity: 0.9;}
+
+.Scoreboard_General {
+  background-color: transparent;
+  padding: 5px;
+  text-align: center;
+  border-collapse: separate;
+  color: #692c29;
+  font-weight: bold;
+  font-size: 200%;
+}
+.Scoreboard_Header {
+  background-color: #a52931;
+  color: #e9cc66;
+  font-weight: bolder;
+  padding: 5%;
+}
+
+
+/* Board Components */
+.tile {
+  background-color: lightskyblue;
+  border: 1px solid #999;
+  float: left;
+  height: 25px;
+  width: 25px;
+}
+
+.board {
+  background-color: black;
+}
