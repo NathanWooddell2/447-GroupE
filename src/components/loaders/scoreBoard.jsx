@@ -54,22 +54,22 @@ function ScoreBoard(){
     </tr>
     console.log(data);*/
     return(
-        <body>
+        <body className='Scoreboard_General'>
             
             <table>
                 <thead>
                     
-                    <tr>
-                        <td>
+                    <tr className='Scoreboard_Header'>
+                        <td className='Scoreboard_Header_Row'>
                             Name
                         </td>
-                        <td>
-                            Highest Level Reached
+                        <td className='Scoreboard_Header_Row'>
+                            Level Reached
                         </td>
-                        <td>
+                        <td className='Scoreboard_Header_Row'>
                             Accuracy Achieved
                         </td>
-                        <td>
+                        <td className='Scoreboard_Header_Row'>
                             ID
                         </td>
                     </tr>

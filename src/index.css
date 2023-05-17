@@ -83,6 +83,12 @@ code {
   color: #e9cc66;
   font-weight: bolder;
   padding: 5%;
+  opacity: 0.9;
+}
+.Scoreboard_Header_Row {
+  width: 10em;
+  font-size: 100%;
+  padding: 1%;
 }
 
 
@@ -102,7 +108,6 @@ code {
 .board {
   background-color: black;
 }
-
 .board-row {
   background: transparent;
 }
