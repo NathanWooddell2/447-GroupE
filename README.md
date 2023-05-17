@@ -1,5 +1,7 @@
 # js-battleship
 
+This is the battleship Web Game
+
 Make sure Node.js is installed on your computer.
 
 First in your terminal write command "npm i express socket.io" so you have socket.io installed on your system
