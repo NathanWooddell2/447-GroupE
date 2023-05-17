@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="utf-8" />
+    <title>Battleship</title>
+    <link rel="stylesheet" href="normal.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script>
+        let selectGame = 'singlePlayer'
+        let width = 12
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        video#waves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+
+</head> 
+<body>
+
+    <video id="waves" autoplay loop muted>
+        <source src="Waves.mp4" type="video/mp4">
+        <source src="Waves.webm" type="video/webm">
+    </video>
+
+    <div id="boards-contain"></div>
+
+    <div id="boards-contain">
+        <div class="invisible-info">
+
+            <div class="prep-buttons" id="board-buttons">
+                <button id="begin-button" class="game-mode title-btn">BEGIN</button>
+                <button id="rotate-button" class="game-mode title-btn">ROTATE</button>
+            </div>
+            <div id="info">
+                <p>Turn: <span id="whos-turn" class="text-output"></span></p>
+                <p>Information: <span id="information" class="text-output"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="boards-contain">
+        <div class="select-contain">
+            <div id="0" class="battleship battleship-design" draggable="true"></div>
+            <div id="1" class="carrier carrier-design" draggable="true"></div>
+            <div id="2" class="cruiser cruiser-design" draggable="true"></div>
+            <div id="3" class="destroyer destroyer-design" draggable="true"></div>
+            <div id="4" class="patrol patrol-design" draggable="true"></div>
+            <div id="5" class="rescue rescue-design" draggable="true"></div>
+            <div id="6" class="submarine submarine-design" draggable="true"></div>
+        </div>
+    </div>
+
+
+
+
+    <script src="app.js"></script>
+
+
+</body>
+</html>

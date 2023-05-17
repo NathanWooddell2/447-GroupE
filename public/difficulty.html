@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="utf-8" />
+    <title>Battleship</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        video#waves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+
+</head>
+<body>
+
+    <video id="waves" autoplay loop muted>
+        <source src="Waves.mp4" type="video/mp4">
+        <source src="Waves.webm" type="video/webm">
+    </video>
+
+    <div class="title-screen">
+        <h1 class="game-name">Select Difficulty</h1>
+        <div>
+            <a href="/easy.html" class="game-mode title-btn">Easy</a>
+            <a href="/normal.html" class="game-mode title-btn">Normal</a>
+            <a href="/hard.html" class="game-mode title-btn">Hard</a>
+
+        </div>
+    </div>
+
+</body>
+</html>

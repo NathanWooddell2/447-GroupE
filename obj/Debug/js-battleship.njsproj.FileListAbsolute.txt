@@ -1,0 +1,3 @@
+C:\Users\seanr\source\repos\js-battleship\js-battleship\js-battleship\obj\Debug\js-battleship.njsproj.AssemblyReference.cache
+C:\Users\seanr\source\repos\js-battleship\js-battleship\js-battleship\obj\Debug\js-battleship.njsproj.CoreCompileInputs.cache
+C:\Users\seanr\source\repos\js-battleship\js-battleship\js-battleship\bin\Microsoft.NodejsTools.WebRole.dll

@@ -1,0 +1,796 @@
+body {
+    margin: 0;
+    background-color: aliceblue;
+}
+
+*, *::before, *::after {
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+.title-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.game-name {
+    font-family: 'Bangers', cursive;
+    font-size: 6rem;
+}
+
+.game-mode {
+    font-size: inherit;
+    background-color: black;
+    padding: .2em 1em;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: .2em;
+    cursor: pointer;
+    color: white;
+
+}
+
+.game-mode:hover {
+    background-color: darkred;
+}
+
+.game-mode:focus {
+    background-color: darkred;
+}
+
+.title-btn {
+    font-size: 2rem;
+    margin-left: 3rem;
+}
+
+.title-btn:first-child {
+    margin-left: 0;
+}
+
+#boards-contain {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+
+.boardGame {
+    background-color: dodgerblue;
+    margin: 2vmin;
+    display: grid;
+    grid-template-rows: repeat(12, 4.6vmin);
+    grid-template-columns: repeat(12, 4.6vmin);
+}
+
+.grid-tile {
+    border: 1px solid hsla(0, 0%, 100%, .2)
+}
+
+.taken {
+    position: relative;
+    background-color: gray;
+}
+
+
+.taken.head.horizontal,
+.taken.head.horizontal::before{
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.taken.tail.horizontal,
+.taken.tail.horizontal::before{
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.taken.head.vertical,
+.taken.head.vertical::before{
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+}
+
+.taken.tail.vertical,
+.taken.tail.vertical::before{
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+
+
+#p1 .taken.horizontal::before,
+#p1 .taken.vertical::before {
+    content: '';
+    position: absolute;
+    border: .3vmin solid white;
+    right: -1px;
+    left: -1px;
+    top: -1px;
+    bottom: -1px;
+}
+
+#p1 .taken.horizontal::before {
+    border-left: none;
+    border-right: none;
+    animation: foamY 3s linear infinite;
+}
+
+#p1 .taken.vertical::before {
+    border-top: none;
+    border-bottom: none;
+    animation: foamX 3s linear infinite;
+}
+
+@keyframes foamX {
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(1.5);
+    }
+}
+
+@keyframes foamY {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleY(1.5);
+    }
+}
+
+.select-contain {
+    display: flex;
+    
+}
+
+.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/Battleship.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.battleship {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * 4);
+    height: 4.6vmin;
+    border-radius: 2.3vmin;
+}
+
+.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/Carrier.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.carrier {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * 5);
+    height: 4.6vmin;
+    border-radius: 2.3vmin;
+}
+
+.cruiser-design {
+    background-color: transparent;
+    background-image: url(pictures/Cruiser/Cruiser.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.cruiser {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * 3);
+    height: 4.6vmin;
+    border-radius: 2.3vmin;
+}
+
+.destroyer-design {
+    background-color: transparent;
+    background-image: url(pictures/Destroyer/Destroyer.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.destroyer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * 2);
+    height: 4.6vmin;
+    border-radius: 2.3vmin;
+}
+
+.patrol-design {
+    background-color: transparent;
+    background-image: url(pictures/Patrol/Patrol.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.patrol {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * 3);
+    height: 4.6vmin;
+    border-radius: 2.3vmin;
+}
+
+.rescue-design {
+    background-color: transparent;
+    background-image: url(pictures/Rescue/Rescue.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.rescue {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * 2);
+    height: 4.6vmin;
+    border-radius: 2.3vmin;
+}
+
+.submarine-design {
+    background-color: transparent;
+    background-image: url(pictures/Submarine/Submarine.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.submarine {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * 3);
+    height: 4.6vmin;
+    border-radius: 2.3vmin;
+}
+
+.float {
+    background-color: grey;
+}
+
+#AI .battleship-design,
+#AI .carrier-design,
+#AI .cruiser-design,
+#AI .destroyer-design,
+#AI .patrol-design,
+#AI .rescue-design,
+#AI .submarine-design,
+#AI .hit,
+#p1 .hit {
+    background-color: dodgerblue !important;
+    border-radius: 0 !important;
+    background-image: none;
+}
+
+
+.comms {
+    font-size: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invisible-info {
+    font-size: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    border-radius: .2em;
+}
+
+.text-output {
+    margin: 1rem;
+}
+
+
+.miss::after{
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    width: 2vmin;
+    height: 2vmin;
+}
+
+.hit::after {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    width: 2vmin;
+    height: 2vmin;
+}
+
+.miss::after {
+    background-color: white;
+}
+
+.hit::after {
+    background-color: red;
+}
+
+.miss::before {
+    content: '';
+    position: absolute;
+    animation: boom .2s ease-out forwards;
+    border: 1vmin solid white;
+    border-radius: 100%;
+    height: 2vmin;
+    width: 2vmin;
+}
+
+.hit {
+    animation: hit .2s ease-out forwards;
+}
+
+@keyframes boom {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(5);
+    }
+}
+
+@keyframes hit {
+    0% {
+        background-color: red;
+    }
+    100% {
+        background-color: grey;
+    }
+}
+
+.hit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miss {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    margin: 2vmin;
+}
+
+.connected, .set {
+    opacity: .25;
+    font-weight: normal;
+    text-decoration: line-through;
+}
+
+.connected.active,
+.set.active {
+    opacity: 1;
+    text-decoration: none;
+}
+
+
+
+/*--------------------------
+    Battleship images
+    --------------------------------*/
+
+#p1 .taken.head.horizontal.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipHorizHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.horizontal.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipHoriz1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.two.horizontal.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipHoriz2.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.horizontal.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipHorizTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.head.vertical.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipVertHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.vertical.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipVert1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.two.vertical.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipVert2.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.vertical.battleship-design {
+    background-color: transparent;
+    background-image: url(pictures/Battleship/BattleshipVertTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*----------------------------------------------------------*/
+
+/*--------------------------
+    Carrier images
+    --------------------------------*/
+
+#p1 .taken.head.horizontal.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierHorizHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.horizontal.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierHoriz1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.two.horizontal.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierHoriz2.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.three.horizontal.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierHoriz3.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.horizontal.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierHorizTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.head.vertical.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierVertHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.vertical.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierVert1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.two.vertical.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierVert2.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.three.vertical.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierVert3.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.vertical.carrier-design {
+    background-color: transparent;
+    background-image: url(pictures/Carrier/CarrierVertTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*----------------------------------------------------------*/
+
+/*--------------------------
+    Cruiser images
+    --------------------------------*/
+
+#p1 .taken.head.horizontal.cruiser-design {
+    background-color: transparent;
+    background-image: url(pictures/Cruiser/CruiserHorizHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.horizontal.cruiser-design {
+    background-color: transparent;
+    background-image: url(pictures/Cruiser/CruiserHoriz1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.horizontal.cruiser-design {
+    background-color: transparent;
+    background-image: url(pictures/Cruiser/CruiserHorizTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.head.vertical.cruiser-design {
+    background-color: transparent;
+    background-image: url(pictures/Cruiser/CruiserVertHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.vertical.cruiser-design {
+    background-color: transparent;
+    background-image: url(pictures/Cruiser/CruiserVert1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.vertical.cruiser-design {
+    background-color: transparent;
+    background-image: url(pictures/Cruiser/CruiserVertTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*----------------------------------------------------------*/
+
+
+/*--------------------------
+    Destroyer images
+    --------------------------------*/
+
+#p1 .taken.head.horizontal.destroyer-design {
+    background-color: transparent;
+    background-image: url(pictures/Destroyer/DestroyerHorizHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.horizontal.destroyer-design {
+    background-color: transparent;
+    background-image: url(pictures/Destroyer/DestroyerHorizTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.head.vertical.destroyer-design {
+    background-color: transparent;
+    background-image: url(pictures/Destroyer/DestroyerVertHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.vertical.destroyer-design {
+    background-color: transparent;
+    background-image: url(pictures/Destroyer/DestroyerVertTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*----------------------------------------------------------*/
+
+
+/*--------------------------
+    Patrol images
+    --------------------------------*/
+
+#p1 .taken.head.horizontal.patrol-design {
+    background-color: transparent;
+    background-image: url(pictures/Patrol/PatrolHorizHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.horizontal.patrol-design {
+    background-color: transparent;
+    background-image: url(pictures/Patrol/PatrolHoriz1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.horizontal.patrol-design {
+    background-color: transparent;
+    background-image: url(pictures/Patrol/PatrolHorizTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.head.vertical.patrol-design {
+    background-color: transparent;
+    background-image: url(pictures/Patrol/PatrolVertHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.vertical.patrol-design {
+    background-color: transparent;
+    background-image: url(pictures/Patrol/PatrolVert1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.vertical.patrol-design {
+    background-color: transparent;
+    background-image: url(pictures/Patrol/PatrolVertTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*----------------------------------------------------------*/
+
+/*--------------------------
+    Rescue images
+    --------------------------------*/
+
+#p1 .taken.head.horizontal.rescue-design {
+    background-color: transparent;
+    background-image: url(pictures/Rescue/RescueHorizHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.horizontal.rescue-design {
+    background-color: transparent;
+    background-image: url(pictures/Rescue/RescueHorizTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.head.vertical.rescue-design {
+    background-color: transparent;
+    background-image: url(pictures/Rescue/RescueVertHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.vertical.rescue-design {
+    background-color: transparent;
+    background-image: url(pictures/Rescue/RescueVertTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*----------------------------------------------------------*/
+
+/*--------------------------
+    Submarine images
+    --------------------------------*/
+
+#p1 .taken.head.horizontal.submarine-design {
+    background-color: transparent;
+    background-image: url(pictures/Submarine/SubmarineHorizHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.horizontal.submarine-design {
+    background-color: transparent;
+    background-image: url(pictures/Submarine/SubmarineHoriz1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.horizontal.submarine-design {
+    background-color: transparent;
+    background-image: url(pictures/Submarine/SubmarineHorizTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.head.vertical.submarine-design {
+    background-color: transparent;
+    background-image: url(pictures/Submarine/SubmarineVertHead.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.one.vertical.submarine-design {
+    background-color: transparent;
+    background-image: url(pictures/Submarine/SubmarineVert1.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#p1 .taken.tail.vertical.submarine-design {
+    background-color: transparent;
+    background-image: url(pictures/Submarine/SubmarineVertTail.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/*----------------------------------------------------------*/
