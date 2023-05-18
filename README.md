@@ -17,9 +17,9 @@ This branch mainly exists for posterity, it was used as our emergency presentati
 
 ## Usage Guide
 This project requires Node JS to be installed to run. To install this project you will need to run the following in terminal or powershell:
-'''
+```
 npm install
 npm install express
 npm start
-'''
+```
 These commands should automatically open a new browser window for you to interact with the web app.
